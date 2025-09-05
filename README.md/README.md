@@ -1,3 +1,8 @@
+## 👤 Data Diri
+- **Nama**  : Fajrul Santoso  
+- **NIM**   : 244107023010  
+- **Kelas** : TI-3H  
+
  Codelab 02 - Bahasa Pemrograman Dart (Polinema)
 
 Repository ini berisi hasil praktikum dari **Codelab 02: Pengantar Bahasa Pemrograman Dart Bagian 1**.  
