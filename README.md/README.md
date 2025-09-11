@@ -1,4 +1,4 @@
- Codelab 02 - Bahasa Pemrograman Dart (Polinema)
+Codelab 02 - Bahasa Pemrograman Dart (Polinema)
 
 Repository ini berisi hasil praktikum dari **Codelab 02: Pengantar Bahasa Pemrograman Dart Bagian 1**.  
 Struktur repository:
@@ -67,4 +67,3 @@ void main() {
   print("Perbedaan:");
   print("1. Null Safety → variabel bisa null (ditandai dengan '?').");
   print("2. Late Variable → ditunda inisialisasinya, tapi wajib diisi sebelum dipakai.");
-}
