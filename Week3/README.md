@@ -30,4 +30,12 @@ Jadi total output 0 sampai 76.
 ## Praktikum 3 akhir
 ![Soal 2](img/Praktikum_3_awal.PNG)
 ![Soal 2](img/Praktikum_3_akhir.PNG)
-Program ini menggunakan perulangan for untuk mencetak angka mulai dari 10 hingga 26. Pada kode ditambahkan dua kontrol alur yaitu break dan continue. Perintah break digunakan untuk menghentikan perulangan sepenuhnya ketika nilai index mencapai 21, sehingga angka setelah 21 tidak akan dicetak. Sementara itu, perintah continue digunakan untuk melewati iterasi tertentu, namun pada kasus ini kondisinya tidak terpenuhi karena perulangan dimulai dari angka 10. Hasil akhirnya, program hanya menampilkan angka 10 sampai 20 di laya
+## Penjelasanya
+Program ini menggunakan perulangan for untuk mencetak angka mulai dari 10 hingga 26. Pada kode ditambahkan dua kontrol alur yaitu break dan continue. Perintah break digunakan untuk menghentikan perulangan sepenuhnya ketika nilai index mencapai 21, sehingga angka setelah 21 tidak akan dicetak. Sementara itu, perintah continue digunakan untuk melewati iterasi tertentu, namun pada kasus ini kondisinya tidak terpenuhi karena perulangan dimulai dari angka 10. Hasil akhirnya, program hanya menampilkan angka 10 sampai 20 di layar
+
+
+## TugasPraktikum
+![Soal 2](img/Tugas_Praktikum_awal.PNG)
+![Soal 2](img/Tugas_Praktikum_akhir.PNG)
+## Penjelasanya
+Program ini menampilkan bilangan prima dari 0 sampai 201 menggunakan Dart. Angka dicek dengan fungsi isPrima(), dan jika termasuk bilangan prima akan ditampilkan bersama identitas: Fajrul Santoso (244107023010).
