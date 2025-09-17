@@ -35,3 +35,12 @@ Memahami Dart sangat penting sebelum menggunakan Flutter karena Flutter sepenuhn
 
 ## Kesimpulan
 Dengan memahami dasar ini, pengembangan aplikasi Flutter jadi lebih mudah dan efisien.
+
+## JAWABAN SOAL 4
+
+**Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan Late variabelKumpulkan jawaban Anda kepada dosen pengampu sesuai kesepakatan di kelas**
+
+**Null Safety**
+Null Safety mencegah error karena nilai null.
+Variabel default tidak boleh null, kecuali ditandai dengan ?.
+![Soal 1](img/Safety4.PNG) 
