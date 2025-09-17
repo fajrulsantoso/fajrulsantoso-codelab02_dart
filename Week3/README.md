@@ -38,3 +38,4 @@ Program ini menggunakan perulangan for untuk mencetak angka mulai dari 10 hingga
 ![Soal 2](img/Tugas_Praktikum_awal.PNG)
 ![Soal 2](img/Tugas_Praktikum_akhir.PNG)
 ## Penjelasanya
+Program ini menampilkan bilangan prima dari 0 sampai 201 menggunakan Dart. Angka dicek dengan fungsi isPrima(), dan jika termasuk bilangan prima akan ditampilkan bersama identitas: Fajrul Santoso (244107023010).
