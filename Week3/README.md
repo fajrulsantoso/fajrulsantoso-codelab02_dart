@@ -20,3 +20,8 @@ Hasilnya saat Run → muncul error Undefined name 'counter'
 ## Praktikum 2 Awal
 ![Soal 2](img/Praktikum_2_awal.PNG)
 deklarasikan dan inisialisasi dulu variabel counter maka akan menampilkan 1 sampai 32
+
+
+## Praktikum 2 akhir
+![Soal 2](img/Praktikum_2_akhir.PNG)
+deklarasikan dan inisialisasi dulu variabel counter maka akan menampilkan 1 sampai 32
