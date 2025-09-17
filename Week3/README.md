@@ -26,3 +26,8 @@ deklarasikan dan inisialisasi dulu variabel counter maka akan menampilkan 1 samp
 ![Soal 2](img/Praktikum_2_akhir.PNG)
 Do-while loop → mulai dari nilai counter = 33, terus mencetak sampai 76.
 Jadi total output 0 sampai 76.
+
+## Praktikum 3 akhir
+![Soal 2](img/Praktikum_3_awal.PNG)
+![Soal 2](img/Praktikum_3_akhir.PNG)
+Program ini menggunakan perulangan for untuk mencetak angka mulai dari 10 hingga 26. Pada kode ditambahkan dua kontrol alur yaitu break dan continue. Perintah break digunakan untuk menghentikan perulangan sepenuhnya ketika nilai index mencapai 21, sehingga angka setelah 21 tidak akan dicetak. Sementara itu, perintah continue digunakan untuk melewati iterasi tertentu, namun pada kasus ini kondisinya tidak terpenuhi karena perulangan dimulai dari angka 10. Hasil akhirnya, program hanya menampilkan angka 10 sampai 20 di laya
