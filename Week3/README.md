@@ -24,4 +24,5 @@ deklarasikan dan inisialisasi dulu variabel counter maka akan menampilkan 1 samp
 
 ## Praktikum 2 akhir
 ![Soal 2](img/Praktikum_2_akhir.PNG)
-deklarasikan dan inisialisasi dulu variabel counter maka akan menampilkan 1 sampai 32
+Do-while loop → mulai dari nilai counter = 33, terus mencetak sampai 76.
+Jadi total output 0 sampai 76.
