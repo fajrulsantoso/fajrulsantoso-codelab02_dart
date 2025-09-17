@@ -40,15 +40,22 @@ Dengan memahami dasar ini, pengembangan aplikasi Flutter jadi lebih mudah dan ef
 
 **Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan Late variabelKumpulkan jawaban Anda kepada dosen pengampu sesuai kesepakatan di kelas**
 
-**Null Safety**
+## Null Safety**
 mencegah error karena nilai null.
 Variabel default tidak boleh null, kecuali ditandai dengan ?.
-**Contoh:**
+## Contoh:**
 ![Soal 1](img/Safety4.PNG) 
 
-**late Variable**
+## late Variable**
 late digunakan untuk menunda inisialisasi variabel.
 Wajib diberi nilai sebelum digunakan.
-**Contoh:**
+## Contoh:**
 ![Soal 1](img/late4.PNG) 
 
+## Perbedaan Utama
+
+**Null Safety (?) → variabel bisa null, aman dari error saat compile.**
+
+**late → inisialisasi ditunda, tapi harus ada nilai sebelum dipakai.**
+
+✍️ Dibuat oleh: Fajrul Santoso (244107023010)
