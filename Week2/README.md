@@ -9,5 +9,8 @@
 
 ![Soal 1](img/Soal01.PNG) 
 
- ## SOAL 1 JAWABAN
+ ## JAWABAN SOAL 1
+
+![Soal 1](img/JawabanSoal1.PNG) 
+
  
