@@ -5,6 +5,7 @@
 - **Kelas**: 3H  
 - **Prodi**: D-IV Teknik Informatika  
 
-![Soal 1](../img/Praktikum_1.PNG)
+![Soal 1](img/Praktikum_1.PNG)
+
 ---
 https://github.com/fajrulsantoso/fajrulsantoso-codelab02_dart/blob/main/Week3/img/Praktikum_1.PNG
