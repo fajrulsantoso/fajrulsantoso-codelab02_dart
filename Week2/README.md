@@ -43,10 +43,12 @@ Dengan memahami dasar ini, pengembangan aplikasi Flutter jadi lebih mudah dan ef
 **Null Safety**
 mencegah error karena nilai null.
 Variabel default tidak boleh null, kecuali ditandai dengan ?.
+**Contoh:**
 ![Soal 1](img/Safety4.PNG) 
 
 **late Variable**
 late digunakan untuk menunda inisialisasi variabel.
 Wajib diberi nilai sebelum digunakan.
 **Contoh:**
+![Soal 1](img/late4.PNG) 
 
