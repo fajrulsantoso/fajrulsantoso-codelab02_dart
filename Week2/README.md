@@ -1,3 +1,13 @@
+# Pemrograman Mobile - Week 2
+
+## Biodata
+- **Nama**: Fajrul Santoso  
+- **Kelas**: 3H  
+- **Prodi**: D-IV Teknik Informatika  
+
+  ## SOAL 1
+
+
 Codelab 02 - Bahasa Pemrograman Dart (Polinema)
 
 Repository ini berisi hasil praktikum dari Codelab 02: Pengantar Bahasa Pemrograman Dart Bagian 1.
