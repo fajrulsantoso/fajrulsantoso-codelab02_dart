@@ -13,9 +13,9 @@
 program ini memperlihatkan penggunaan percabangan (if-else) dan logika sederhana dalam Dart.
 
 ## Praktikum 2 error
-![Soal 2](img/error praktikum2.PNG) 
+![Soal 2](img/error praktikum2.PNG)
 Masalah: variabel counter belum pernah dideklarasikan.
 Hasilnya saat Run → muncul error Undefined name 'counter'
 
 ## Praktikum 2 Awal
-![Soal 2](img/Praktikum_2_awal.PNG) 
+![Soal 2](img/Praktikum_2_awal.PNG)
