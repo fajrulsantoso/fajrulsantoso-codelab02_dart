@@ -35,6 +35,7 @@ Memahami Dart sangat penting sebelum menggunakan Flutter karena Flutter sepenuhn
 
 ## Kesimpulan
 Dengan memahami dasar ini, pengembangan aplikasi Flutter jadi lebih mudah dan efisien.
+<<<<<<< HEAD
 
 ## JAWABAN SOAL 4
 
@@ -59,3 +60,5 @@ Wajib diberi nilai sebelum digunakan.
 **late → inisialisasi ditunda, tapi harus ada nilai sebelum dipakai.**
 
 ✍️ Dibuat oleh: Fajrul Santoso (244107023010)
+=======
+>>>>>>> 8c43c7e (Week4)
