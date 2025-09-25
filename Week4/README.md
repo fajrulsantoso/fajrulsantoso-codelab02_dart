@@ -75,9 +75,9 @@ Closure adalah function yang membawa variabel dari scope luar meskipun scope lua
 ### a. Dengan List
 📄 Contoh kode: `src/return_list.dart`  
 🖼️ Hasil eksekusi:  
-![Return List](img/return_list.JPG)
+![Return List](img/return_list.dart)
 
 ### b. Dengan Record (Dart 3)
 📄 Contoh kode: `src/return_record.dart`  
 🖼️ Hasil eksekusi:  
-![Return Record](img/return_record.JPG)
+![Return Record](img/return_record.dart)
