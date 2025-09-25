@@ -60,13 +60,13 @@ Biasanya dipakai sebagai callback atau untuk operasi sederhana.
 Scope ditentukan oleh posisi penulisan kode.  
 📄 Contoh kode: `src/function_scope.dart`  
 🖼️ Hasil eksekusi:  
-![Lexical Scope](img/function_scope.JPG)
+![Lexical Scope](img/function_scope.dart)
 
 ### b. Lexical Closure
 Closure adalah function yang membawa variabel dari scope luar meskipun scope luar sudah selesai dieksekusi.  
 📄 Contoh kode: `src/function_closure.dart`  
 🖼️ Hasil eksekusi:  
-![Lexical Closure](img/function_closure.JPG)
+![Lexical Closure](img/function_closure.dart)
 
 ---
 
