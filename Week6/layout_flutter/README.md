@@ -119,17 +119,6 @@ Widget textSection = Container(
 ---
 
 ## Praktikum 4: Implementasi image section
-## Langkah 1: Siapkan aset gambar
-![Preview](img/P2.JPG)  
-
-#### 2️⃣ Menambahkan Gambar  
-![Preview](img/P2.JPG)  
-
-#### 3️⃣ Menambahkan Title Row (Judul, Lokasi, dan Bintang)  
-![Preview](img/P3.JPG)  
-
-#### 4️⃣ Menambahkan Button Row (CALL / ROUTE / SHARE)  
-![Preview](img/P4.JPG)  
 
 #### 5️⃣ Menambahkan Deskripsi (Text Section)  
 ![Preview](img/P5.JPG)  
