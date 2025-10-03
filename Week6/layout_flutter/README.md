@@ -5,6 +5,11 @@
 - **NIM**   : 244107023010  
 ## Praktikum 1: Membangun Layout di Flutter
  ## CODE
+
+## 💻 Source Code
+Isi nama dan NIM Anda di text title.
+
+```dart
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -15,18 +20,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FAJRUL SANTOSOS  244107023010',
+      title: 'Flutter layout: Fajrul Santoso (244107023010)',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('FAJRUL SANTOSOS  244107023010'),
+          title: const Text('Flutter layout demo'),
         ),
         body: const Center(
-          child: Text('FAJRUL SANTOSOS  244107023010'),
+          child: Text('Hello World'),
         ),
       ),
     );
   }
 }
+
  
 ##  Membangun Layout di Flutte
 
