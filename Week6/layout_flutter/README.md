@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
 ![Preview](img/P1.JPG)  
 
 ## Praktikum 2: Implementasi button row
+## Langkah 1: Buat method Column _buildButtonColumn
 #### 2️⃣ Menambahkan Gambar  
 ![Preview](img/P2.JPG)  
 
