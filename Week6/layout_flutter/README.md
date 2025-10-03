@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
 #### 1️⃣ Membangun Layout di Flutter  
 ![Preview](img/P1.JPG)  
 
+## Praktikum 2: Implementasi button row
 #### 2️⃣ Menambahkan Gambar  
 ![Preview](img/P2.JPG)  
 
