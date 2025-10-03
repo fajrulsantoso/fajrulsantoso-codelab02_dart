@@ -7,9 +7,8 @@
  ## CODE
 
 ## 💻 Source Code
-Isi nama dan NIM Anda di text title.
-
 ```dart
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -20,20 +19,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout: Fajrul Santoso (244107023010)',
+      title: 'FAJRUL SANTOSOS  244107023010',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('FAJRUL SANTOSOS  244107023010'),
         ),
         body: const Center(
-          child: Text('Hello World'),
+          child: Text('FAJRUL SANTOSOS  244107023010'),
         ),
       ),
     );
   }
 }
 
- 
 ##  Membangun Layout di Flutte
 
 
