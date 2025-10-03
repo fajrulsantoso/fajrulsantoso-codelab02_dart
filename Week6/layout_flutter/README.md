@@ -37,6 +37,9 @@ class MyApp extends StatelessWidget {
 
 ---
 
+
+
+
 ### 📸 Jawaban Screenshots  
 
 #### 1️⃣ Membangun Layout di Flutter  
@@ -77,6 +80,21 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
+
+---
+## Langkah 2: Buat widget buttonSection
+```dart
+Color color = Theme.of(context).primaryColor;
+
+Widget buttonSection = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    _buildButtonColumn(color, Icons.call, 'CALL'),
+    _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+    _buildButtonColumn(color, Icons.share, 'SHARE'),
+  ],
+);
 ```
 
 ---
