@@ -1,4 +1,8 @@
+# Laporan Praktikum Flutter - Layout Demo
 
+## 📌 Identitas
+- **Nama**  : Fajrul Santoso  
+- **NIM**   : 244107023010  
 
 ##  Membangun Layout di Flutter
 ![Preview](img/P1.JPG)
