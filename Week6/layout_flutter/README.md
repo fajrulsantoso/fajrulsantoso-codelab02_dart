@@ -1,14 +1,16 @@
-# Laporan Praktikum Flutter - Layout Demo
+
+# 📘 Laporan Praktikum Flutter - Layout Demo
 
 ## 📌 Identitas
 - **Nama**  : Fajrul Santoso  
 - **NIM**   : 244107023010  
-## Praktikum 1: Membangun Layout di Flutter
- ## CODE
 
-## 💻 Source Code
+---
+
+## 🧩 Praktikum 1: Membangun Layout di Flutter  
+
+### 💻 Source Code  
 ```dart
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -19,43 +21,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FAJRUL SANTOSOS  244107023010',
+      title: 'FAJRUL SANTOSO  244107023010',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('FAJRUL SANTOSOS  244107023010'),
+          title: const Text('FAJRUL SANTOSO  244107023010'),
         ),
         body: const Center(
-          child: Text('FAJRUL SANTOSOS  244107023010'),
+          child: Text('FAJRUL SANTOSO  244107023010'),
         ),
       ),
     );
   }
 }
-///
+```
 
-## Praktikum 1: Membangun Layout di Flutter
- ## CODE
+---
 
-##  Membangun Layout di Flutte
+### 📸 Jawaban Screenshots  
 
+#### 1️⃣ Membangun Layout di Flutter  
+![Preview](img/P1.JPG)  
 
-## JAWABAN
-![Preview](img/P1.JPG)
+#### 2️⃣ Menambahkan Gambar  
+![Preview](img/P2.JPG)  
 
-## Menambahkan gambar 
-![Preview](img/P2.JPG)
+#### 3️⃣ Menambahkan Title Row (Judul, Lokasi, dan Bintang)  
+![Preview](img/P3.JPG)  
 
-## Menambahkan title Row  Judul lokasi dan bintang
-![Preview](img/P3.JPG)
+#### 4️⃣ Menambahkan Button Row (CALL / ROUTE / SHARE)  
+![Preview](img/P4.JPG)  
 
-## Menambahkan Button Row (CALL / ROUTE / SHARE)
-![Preview](img/P4.JPG)
+#### 5️⃣ Menambahkan Deskripsi (Text Section)  
+![Preview](img/P5.JPG)  
 
-## Menambahkan Deskripsi (Text Section)
-![Preview](img/P5.JPG)
+---
 
+## 📝 Tugas Praktikum 1
+Selesaikan **Praktikum 1 sampai 4**, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file `README.md`.  
 
-Tugas Praktikum 1
-Selesaikan Praktikum 1 sampai 4, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md!
-Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics
-Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
+Silakan implementasikan di project baru **`basic_layout_flutter`** dengan mengakses sumber ini:  
+🔗 [Flutter Layout Basics](https://docs.flutter.dev/codelabs/layout-basics)  
+
+Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!  
