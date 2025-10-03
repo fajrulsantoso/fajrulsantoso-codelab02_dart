@@ -3,8 +3,35 @@
 ## 📌 Identitas
 - **Nama**  : Fajrul Santoso  
 - **NIM**   : 244107023010  
+## Praktikum 1: Membangun Layout di Flutter
+ ## CODE
+import 'package:flutter/material.dart';
 
-##  Membangun Layout di Flutter
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'FAJRUL SANTOSOS  244107023010',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('FAJRUL SANTOSOS  244107023010'),
+        ),
+        body: const Center(
+          child: Text('FAJRUL SANTOSOS  244107023010'),
+        ),
+      ),
+    );
+  }
+}
+ 
+##  Membangun Layout di Flutte
+
+
+## JAWABAN
 ![Preview](img/P1.JPG)
 
 ## Menambahkan gambar 
