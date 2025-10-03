@@ -117,6 +117,11 @@ Widget textSection = Container(
 ```
 
 ---
+
+## Praktikum 4: Implementasi image section
+## Langkah 1: Siapkan aset gambar
+![Preview](img/P2.JPG)  
+
 #### 2️⃣ Menambahkan Gambar  
 ![Preview](img/P2.JPG)  
 
