@@ -98,8 +98,25 @@ Widget buttonSection = Row(
 ```
 
 ---
+## Praktikum 3: Implementasi text section
 
+## Langkah 1: Buat widget textSection 
+```dart
+Widget textSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: const Text(
+    'Carilah teks di internet yang sesuai '
+    'dengan foto atau tempat wisata yang ingin '
+    'Anda tampilkan. '
+    'Tambahkan nama dan NIM Anda sebagai '
+    'identitas hasil pekerjaan Anda. '
+    'Selamat mengerjakan 🙂.',
+    softWrap: true,
+  ),
+);
+```
 
+---
 #### 2️⃣ Menambahkan Gambar  
 ![Preview](img/P2.JPG)  
 
