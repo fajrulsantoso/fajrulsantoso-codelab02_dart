@@ -22,7 +22,6 @@ samples, guidance on mobile development, and a full API reference.
 ## Membuat Project Flutter Baru
 ![Praktikum 1](img/P1.JPG)
 
-## Menghubungkan Perangkat Android atau Emulator 
 ![Praktikum 1](img/P2.JPG)
 
 ## Membuat Repository GitHub dan Laporan Praktikum
