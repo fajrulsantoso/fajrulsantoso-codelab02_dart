@@ -31,21 +31,6 @@ Kembali ke VS Code, ubah platform di pojok kanan bawah ke emulator atau device a
 Langkah 12:
 Silakan screenshot seperti pada Langkah 11, namun teks yang ditampilkan dalam aplikasi berupa nama lengkap Anda. Simpan file screenshot dengan nama 01.png pada folder images (buat folder baru jika belum ada) di project hello_world Anda. Lalu ubah isi README.md seperti berikut, sehingga tampil hasil screenshot pada file README.md. Kemudian push ke repository Anda.
 
-## Membuat Project Flutter Baru
-![Praktikum 1](img/P1.JPG)
+##  Praktikum 4: Menerapkan Widget Dasar
+Langkah 1: Text Widget Buat folder baru basic_widgets di dalam folder lib. Kemudian buat file baru di dalam basic_widgets dengan nama text_widget.dart. Ketik atau salin kode program berikut ke project hello_world Anda pada file text_widget.dart.
 
-![Praktikum 1](img/P2.JPG)
-
-## Membuat Repository GitHub dan Laporan Praktikum
-
-
-![Praktikum 1](img/P3L9.JPG)
-![Praktikum 1](img/P3L10.JPG)
-![Praktikum 1](img/P3L12.JPG)
-![Praktikum 1](img/P3L13.JPG)
-
-## Praktikum 4: Menerapkan Widget Dasar
-
-
-
-![Praktikum 1](img/P4L1.JPG)
