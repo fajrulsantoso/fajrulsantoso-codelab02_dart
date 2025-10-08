@@ -57,3 +57,34 @@ Lakukan import file text_widget.dart ke main.dart, lalu ganti bagian text widget
 
 ## Jawaban
 
+
+Langkah 2: Image Widget Buat sebuah file image_widget.dartdi dalam folder basic_widgets dengan isi kode berikut.
+
+
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+
+class MyImageWidget extends StatelessWidget {
+  const MyImageWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Image(
+      image: AssetImage("images/IamProgrammerEnglish.png")
+    );
+  }
+}
+```
+
+---
+Lakukan penyesuaian asset pada file pubspec.yaml dan tambahkan file logo Anda di folder assets project hello_world.
+### 💻 Source Code  
+```dart
+flutter:
+  assets:
+    - images/
+```
+
+---
+
