@@ -88,3 +88,13 @@ flutter:
 
 ---
 
+<<<<<<< HEAD
+=======
+![Praktikum 1](img/P4L1.JPG)
+
+
+## Selesaikan Codelabs: Your first Flutter app, lalu buatlah laporan praktikumnya dan push ke repository GitHub Anda!
+
+ ## 01 Menambahkan tombol
+ 
+>>>>>>> d986af9 (Perbaikan - Fajrul Santoso 244107023010)
