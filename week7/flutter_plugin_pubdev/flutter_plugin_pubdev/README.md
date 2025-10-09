@@ -108,7 +108,23 @@ sebuah plugin eksternal bernama auto_size_text ke dalam proyek Flutter. Plugin i
 ditambahkan variabel text bertipe String serta parameter text pada constructor RedTextWidget. Tujuannya agar widget dapat menerima data teks dari luar saat digunakan. Dengan menambahkan required this.text, setiap kali widget dipanggil, nilai teks harus diisi sehingga widget menjadi lebih fleksibel dan dinami
 
 # Pada langkah 6 terdapat dua widget yang ditambahkan, jelaskan fungsi dan perbedaannya!
+ditambahkan dua Container pada class _MyHomePageState.
+RedTextWidget menampilkan teks dari parameter text dengan latar kuning, sedangkan Text menampilkan teks langsung dengan latar hijau.
+Perbedaannya, RedTextWidget lebih dinamis karena menerima teks dari luar, sementara Text bersifat statis.
 # Jelaskan maksud dari tiap parameter yang ada di dalam plugin auto_size_text berdasarkan tautan pada dokumentasi ini !
+maxLines – Menentukan jumlah maksimum baris teks yang ditampilkan.
+
+minFontSize dan maxFontSize – Mengatur ukuran font terkecil dan terbesar yang diizinkan saat teks menyesuaikan ukuran.
+
+stepGranularity – Menentukan seberapa besar perubahan ukuran font setiap kali teks disesuaikan.
+
+presetFontSizes – Menentukan daftar ukuran font tertentu yang boleh digunakan.
+
+group – Menyinkronkan ukuran teks di beberapa widget AutoSizeText agar sama besar.
+
+overflowReplacement – Menampilkan widget pengganti jika teks tidak muat dalam area tampilan.
+
+textAlign, style, dan maxLines – Bekerja seperti pada widget Text biasa untuk mengatur perataan, gaya, dan jumlah baris teks.
 # Kumpulkan laporan praktikum Anda berupa link repository GitHub kepada dosen!
 
 
