@@ -125,7 +125,6 @@ group – Menyinkronkan ukuran teks di beberapa widget AutoSizeText agar sama be
 overflowReplacement – Menampilkan widget pengganti jika teks tidak muat dalam area tampilan.
 
 textAlign, style, dan maxLines – Bekerja seperti pada widget Text biasa untuk mengatur perataan, gaya, dan jumlah baris teks.
-# Kumpulkan laporan praktikum Anda berupa link repository GitHub kepada dosen!
 
 
 
