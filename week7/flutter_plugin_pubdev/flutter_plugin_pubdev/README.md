@@ -98,4 +98,19 @@ Container(
 ## JAWABAN 
 ![Praktikum 1](img/P1L5.JPG)
 
+## Selesaikan Praktikum tersebut, lalu dokumentasikan dan push ke repository Anda berupa screenshot hasil pekerjaan beserta penjelasannya di file README.md!
+# Jelaskan maksud dari langkah 2 pada praktikum tersebut!
+## JAWABAN
+sebuah plugin eksternal bernama auto_size_text ke dalam proyek Flutter. Plugin ini berfungsi untuk membuat ukuran teks menyesuaikan secara otomatis dengan ruang tampilan, sehingga teks tidak terpotong dan tetap terlihat proporsional di berbagai ukuran layar.
+
+# Jelaskan maksud dari langkah 5 pada praktikum tersebut!
+## JAWABAN 
+ditambahkan variabel text bertipe String serta parameter text pada constructor RedTextWidget. Tujuannya agar widget dapat menerima data teks dari luar saat digunakan. Dengan menambahkan required this.text, setiap kali widget dipanggil, nilai teks harus diisi sehingga widget menjadi lebih fleksibel dan dinami
+
+# Pada langkah 6 terdapat dua widget yang ditambahkan, jelaskan fungsi dan perbedaannya!
+# Jelaskan maksud dari tiap parameter yang ada di dalam plugin auto_size_text berdasarkan tautan pada dokumentasi ini !
+# Kumpulkan laporan praktikum Anda berupa link repository GitHub kepada dosen!
+
+
+
 
