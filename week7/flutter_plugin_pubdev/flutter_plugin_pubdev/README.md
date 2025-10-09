@@ -1,16 +1,20 @@
-# flutter_plugin_pubdev
+## 7. Praktikum Menerapkan Plugin di Project Flutter
 
-A new Flutter project.
+## Langkah 1: Buat Project Baru
+Buatlah sebuah project flutter baru dengan nama flutter_plugin_pubdev. Lalu jadikan repository di GitHub Anda dengan nama flutter_plugin_pubdev.
 
-## Getting Started
+# Langkah 2: Menambahkan Plugin
+Tambahkan plugin auto_size_text menggunakan perintah berikut di terminal
 
-This project is a starting point for a Flutter application.
+## Langkah 3: Buat file red_text_widget.dart
+Buat file baru bernama red_text_widget.dart di dalam folder lib lalu isi kode seperti berikut.
 
-A few resources to get you started if this is your first Flutter project:
+## Langkah 4: Tambah Widget AutoSizeText
+Masih di file red_text_widget.dart, untuk menggunakan plugin auto_size_text, ubahlah kode return Container() menjadi seperti berikut.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Langkah 5: Buat Variabel text dan parameter di constructor
+Tambahkan variabel text dan parameter di constructor seperti berikut.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Langkah 6: Tambahkan widget di main.dart
+Buka file main.dart lalu tambahkan di dalam children: pada class _MyHomePageState 
+
