@@ -1,16 +1,7 @@
-# photo_filter_carousel
+## Langkah 1: Buat project baru
+Buatlah project flutter baru di pertemuan 09 dengan nama photo_filter_carousel 
 
-A new Flutter project.
+## Langkah 2: Buat widget Selector ring dan dark gradient
+Buatlah folder widget dan file baru yang berisi kode berikut.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+lib/widget/filter_selector.dart 
