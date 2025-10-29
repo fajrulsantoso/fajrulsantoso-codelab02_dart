@@ -1,5 +1,7 @@
 ## Langkah 1: Buat project baru
 Buatlah project flutter baru di pertemuan 09 dengan nama photo_filter_carousel 
+## JAWABAN
+![Praktikum 3](img/P2L1.JPG)
 
 ## Langkah 2: Buat widget Selector ring dan dark gradient
 Buatlah folder widget dan file baru yang berisi kode berikut.
@@ -165,7 +167,7 @@ class _FilterSelectorState extends State<FilterSelector> {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG)
+![Praktikum 3](img/P2L2.JPG)
 
 
 
@@ -245,7 +247,8 @@ class _PhotoFilterCarouselState extends State<PhotoFilterCarousel> {
 ```
 
 ---  
-
+## JAWABAN
+![Praktikum 3](img/P2L3.JPG)
 
 ## Langkah 4: Membuat filter warna - bagian 1
 Buat file baru di folder widget seperti kode berikut.
@@ -318,7 +321,8 @@ class CarouselFlowDelegate extends FlowDelegate {
 ```
 
 ---   
-
+## JAWABAN
+![Praktikum 3](img/P2L4.JPG)
 
 ## Langkah 5: Membuat filter warna
 Buat file baru di folder widget seperti kode berikut ini.
@@ -392,7 +396,8 @@ class CarouselFlowDelegate extends FlowDelegate {
 ```
 
 ---    
-
+## JAWABAN
+![Praktikum 3](img/P2L5.JPG)
 ## Langkah 6: Implementasi filter carousel
 Terakhir, kita impor widget PhotoFilterCarousel ke main seperti kode berikut ini.
 
@@ -413,3 +418,5 @@ Troubleshoot
 
 ---     
 
+## JAWABAN
+![Praktikum 3](img/P2L6.JPG)
