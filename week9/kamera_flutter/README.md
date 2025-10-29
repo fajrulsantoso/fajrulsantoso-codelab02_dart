@@ -38,7 +38,7 @@ final firstCamera = cameras.first;
 ![Praktikum 3](img/PIL3.JPG)
 
 
-Langkah 4: Buat dan inisialisasi CameraController
+## Langkah 4: Buat dan inisialisasi CameraController
 Setelah Anda dapat mengakses kamera, gunakan langkah-langkah berikut untuk membuat dan menginisialisasi CameraController. Pada langkah berikut ini, Anda akan membuat koneksi ke kamera perangkat yang memungkinkan Anda untuk mengontrol kamera dan menampilkan pratinjau umpan kamera.
 
 Buat StatefulWidget dengan kelas State pendamping.
@@ -101,7 +101,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 
 
-Langkah 5: Gunakan CameraPreview untuk menampilkan preview foto
+## Langkah 5: Gunakan CameraPreview untuk menampilkan preview foto
 Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto. Anda perlu tipe objek void berupa FutureBuilder untuk menangani proses async.
 
 ### 💻 Source Code  
@@ -132,7 +132,7 @@ Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto.
 ![Praktikum 5](img/PIL5.JPG)  
 
 
-Langkah 6: Ambil foto dengan CameraController
+## Langkah 6: Ambil foto dengan CameraController
 Anda dapat menggunakan CameraController untuk mengambil gambar menggunakan metode takePicture(), yang mengembalikan objek XFile, merupakan sebuah objek abstraksi File lintas platform yang disederhanakan. Pada Android dan iOS, gambar baru disimpan dalam direktori cache masing-masing, dan path ke lokasi tersebut dikembalikan dalam XFile.
 
 Pada codelab ini, buatlah sebuah FloatingActionButton yang digunakan untuk mengambil gambar menggunakan CameraController saat pengguna mengetuk tombol.
@@ -173,7 +173,7 @@ FloatingActionButton(
 ![Praktikum 6](img/PIL6.JPG)  
 
 
-Langkah 7: Buat widget baru DisplayPictureScreen
+## Langkah 7: Buat widget baru DisplayPictureScreen
 Buatlah file baru pada folder widget yang berisi kode berikut.
 
 lib/widget/displaypicture_screen.dart
@@ -197,7 +197,7 @@ class DisplayPictureScreen extends StatelessWidget {
   }
 }
 ```
-Langkah 8: Edit main.dart
+## Langkah 8: Edit main.dart
 Edit pada file ini bagian runApp seperti kode berikut.
 
 lib/main.dart 
@@ -221,7 +221,7 @@ runApp(
 ![Praktikum 8](img/PIL8.JPG)  
 
 
-Langkah 9: Menampilkan hasil foto
+## Langkah 9: Menampilkan hasil foto
 Tambahkan kode seperti berikut pada bagian try / catch agar dapat menampilkan hasil foto pada DisplayPictureScreen.
 
 lib/widget/takepicture_screen.dart
@@ -261,6 +261,6 @@ lib/main.dart
 
 ---
 ## JAWABAN
-![Praktikum 9](img/P1L9.JPG)   
+![Praktikum 9](img/PIL9.JPG)   
 
 
