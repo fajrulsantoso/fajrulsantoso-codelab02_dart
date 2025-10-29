@@ -35,7 +35,7 @@ final firstCamera = cameras.first;
 
 ---
 ## JAWABAN
-![Praktikum 2](img/P1L3.JPG)  
+![Praktikum 1](img/P1L3.JPG)  
 
 
 Langkah 4: Buat dan inisialisasi CameraController
