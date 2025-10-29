@@ -35,7 +35,7 @@ final firstCamera = cameras.first;
 
 ---
 ## JAWABAN
-![Praktikum 2](img/P1L3.JPG)  
+![Praktikum 3](img/P1L3.JPG)  
 
 
 Langkah 4: Buat dan inisialisasi CameraController
@@ -99,7 +99,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 ---
 ## JAWABAN
-![Praktikum 2](img/P1L3.JPG)
+![Praktikum 4](img/P1L4.JPG)
 
 
 
@@ -131,7 +131,7 @@ Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto.
 
 ---
 ## JAWABAN
-![Praktikum 5](img/P1L3.JPG)  
+![Praktikum 5](img/P1L5.JPG)  
 
 
 Langkah 6: Ambil foto dengan CameraController
@@ -172,7 +172,7 @@ FloatingActionButton(
 
 ---
 ## JAWABAN
-![Praktikum 5](img/P1L6.JPG)  
+![Praktikum 6](img/P1L6.JPG)  
 
 
 Langkah 7: Buat widget baru DisplayPictureScreen
@@ -199,9 +199,72 @@ class DisplayPictureScreen extends StatelessWidget {
   }
 }
 ```
+## JAWABAN
+![Praktikum 7](img/P1L7.JPG)  
+Langkah 8: Edit main.dart
+Edit pada file ini bagian runApp seperti kode berikut.
+
+lib/main.dart 
+### 💻 Source Code  
+```dart
+runApp(
+    MaterialApp(
+      theme: ThemeData.dark(),
+      home: TakePictureScreen(
+        // Pass the appropriate camera to the TakePictureScreen widget.
+        camera: firstCamera,
+      )
+      debugShowCheckedModeBanner: false,
+    ),
+  );
+```
+
 
 ---
 ## JAWABAN
-![Praktikum 5](img/P1L7.JPG)  
+![Praktikum 8](img/P1L8.JPG)  
+
+
+Langkah 9: Menampilkan hasil foto
+Tambahkan kode seperti berikut pada bagian try / catch agar dapat menampilkan hasil foto pada DisplayPictureScreen.
+
+lib/widget/takepicture_screen.dart
+
+lib/main.dart 
+### 💻 Source Code  
+```dart
+/ Take the Picture in a try / catch block. If anything goes wrong,
+          // catch the error.
+          try {
+            // Ensure that the camera is initialized.
+            await _initializeControllerFuture;
+
+            // Attempt to take a picture and get the file `image`
+            // where it was saved.
+            final image = await _controller.takePicture();
+
+            if (!context.mounted) return;
+
+            // If the picture was taken, display it on a new screen.
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DisplayPictureScreen(
+                  // Pass the automatically generated path to
+                  // the DisplayPictureScreen widget.
+                  imagePath: image.path,
+                ),
+              ),
+            );
+          } catch (e) {
+            // If an error occurs, log the error to the console.
+            print(e);
+          }
+
+```
+
+
+---
+## JAWABAN
+![Praktikum 9](img/P1L9.JPG)   
 
 
