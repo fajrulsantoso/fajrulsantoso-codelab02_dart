@@ -15,7 +15,7 @@ path_provider → menyediakan lokasi atau path untuk menyimpan hasil foto.
 path → membuat path untuk mendukung berbagai platform.
 
 Untuk menambahkan dependensi plugin, jalankan perintah flutter pub add seperti berikut di terminal:
-![Praktikum 2](img/P1L3.JPG)  
+![Praktikum 2](img/P1L2.JPG)  
 
 Langkah 3: Ambil Sensor Kamera dari device
 Selanjutnya, kita perlu mengecek jumlah kamera yang tersedia pada perangkat menggunakan plugin camera seperti pada kode berikut ini. Kode ini letakkan dalam void main()..
@@ -35,7 +35,7 @@ final firstCamera = cameras.first;
 
 ---
 ## JAWABAN
-![Praktikum 2](img/P1L2.JPG)  
+![Praktikum 2](img/P1L3.JPG)  
 
 
 Langkah 4: Buat dan inisialisasi CameraController
