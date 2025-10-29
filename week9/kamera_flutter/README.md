@@ -100,3 +100,36 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 ---
 ## JAWABAN
 ![Praktikum 2](img/P1L3.JPG)
+
+
+
+Langkah 5: Gunakan CameraPreview untuk menampilkan preview foto
+Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto. Anda perlu tipe objek void berupa FutureBuilder untuk menangani proses async.
+
+### 💻 Source Code  
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Take a picture - NIM Anda')),
+      // You must wait until the controller is initialized before displaying the
+      // camera preview. Use a FutureBuilder to display a loading spinner until the
+      // controller has finished initializing.
+      body: FutureBuilder<void>(
+        future: _initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // If the Future is complete, display the preview.
+            return CameraPreview(_controller);
+          } else {
+            // Otherwise, display a loading indicator.
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+```
+
+---
+## JAWABAN
+![Praktikum 5](img/P1L3.JPG)  
+
