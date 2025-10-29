@@ -419,4 +419,10 @@ Troubleshoot
 ---     
 
 ## JAWABAN
-![Praktikum 3](img/P2L6.JPG)
+![Praktikum 3](img/P2L6.JPG) 
+
+void async → Fungsi bersifat asynchronous; bisa menunggu operasi seperti mengambil foto tanpa menghentikan program. void artinya tidak mengembalikan nilai.
+
+@immutable → Menandakan class immutable, artinya setelah objek dibuat, nilai field tidak boleh berubah. Biasanya dipakai di StatelessWidget atau class dengan field final.
+
+@override → Menandakan bahwa metode meng-override metode dari superclass. Berguna agar compiler memeriksa bahwa metode memang ada di parent class.
