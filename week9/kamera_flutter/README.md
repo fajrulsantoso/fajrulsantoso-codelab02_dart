@@ -1,16 +1,6 @@
 # kamera_flutter
 
-A new Flutter project.
+Praktikum 1: Mengambil Foto dengan Kamera di Flutter
+Langkah 1: Buat Project Baru Buatlah sebuah project flutter baru dengan nama kamera_flutter, lalu sesuaikan style laporan praktikum yang Anda buat.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Langkah 2: Tambah dependensi yang diperlukan Anda memerlukan tiga dependensi pada project flutter untuk menyelesaikan praktikum ini.
