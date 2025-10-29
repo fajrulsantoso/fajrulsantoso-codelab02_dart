@@ -15,5 +15,5 @@ path_provider → menyediakan lokasi atau path untuk menyimpan hasil foto.
 path → membuat path untuk mendukung berbagai platform.
 
 Untuk menambahkan dependensi plugin, jalankan perintah flutter pub add seperti berikut di terminal:
-![Praktikum 1](img/P1L2.JPG)  
+![Praktikum 2](img/P1L2.JPG)  
 
