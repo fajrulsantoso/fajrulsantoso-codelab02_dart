@@ -133,3 +133,75 @@ Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto.
 ## JAWABAN
 ![Praktikum 5](img/P1L3.JPG)  
 
+
+Langkah 6: Ambil foto dengan CameraController
+Anda dapat menggunakan CameraController untuk mengambil gambar menggunakan metode takePicture(), yang mengembalikan objek XFile, merupakan sebuah objek abstraksi File lintas platform yang disederhanakan. Pada Android dan iOS, gambar baru disimpan dalam direktori cache masing-masing, dan path ke lokasi tersebut dikembalikan dalam XFile.
+
+Pada codelab ini, buatlah sebuah FloatingActionButton yang digunakan untuk mengambil gambar menggunakan CameraController saat pengguna mengetuk tombol.
+
+Pengambilan gambar memerlukan 2 langkah:
+
+Pastikan kamera telah diinisialisasi.
+Gunakan controller untuk mengambil gambar dan pastikan ia mengembalikan objek Future.
+Praktik baik untuk membungkus operasi kode ini dalam blok try / catch guna menangani berbagai kesalahan yang mungkin terjadi.
+
+Kode berikut letakkan dalam Widget build setelah field body.
+
+### 💻 Source Code  
+```dart
+FloatingActionButton(
+  // Provide an onPressed callback.
+  onPressed: () async {
+    // Take the Picture in a try / catch block. If anything goes wrong,
+    // catch the error.
+    try {
+      // Ensure that the camera is initialized.
+      await _initializeControllerFuture;
+
+      // Attempt to take a picture and then get the location
+      // where the image file is saved.
+      final image = await _controller.takePicture();
+    } catch (e) {
+      // If an error occurs, log the error to the console.
+      print(e);
+    }
+  },
+  child: const Icon(Icons.camera_alt),
+)
+```
+
+---
+## JAWABAN
+![Praktikum 5](img/P1L6.JPG)  
+
+
+Langkah 7: Buat widget baru DisplayPictureScreen
+Buatlah file baru pada folder widget yang berisi kode berikut.
+
+lib/widget/displaypicture_screen.dart
+
+### 💻 Source Code  
+```dart
+// A widget that displays the picture taken by the user.
+class DisplayPictureScreen extends StatelessWidget {
+  final String imagePath;
+
+  const DisplayPictureScreen({super.key, required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Display the Picture - NIM Anda')),
+      // The image is stored as a file on the device. Use the `Image.file`
+      // constructor with the given path to display the image.
+      body: Image.file(File(imagePath)),
+    );
+  }
+}
+```
+
+---
+## JAWABAN
+![Praktikum 5](img/P1L7.JPG)  
+
+
