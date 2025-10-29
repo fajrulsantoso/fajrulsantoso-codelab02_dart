@@ -98,8 +98,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 ```
 
 ---
-## JAWABAN
-![Praktikum 4](img/P1L4.JPG)
 
 
 
@@ -131,7 +129,7 @@ Gunakan widget CameraPreview dari package camera untuk menampilkan preview foto.
 
 ---
 ## JAWABAN
-![Praktikum 5](img/P1L5.JPG)  
+![Praktikum 5](img/PIL5.JPG)  
 
 
 Langkah 6: Ambil foto dengan CameraController
@@ -172,7 +170,7 @@ FloatingActionButton(
 
 ---
 ## JAWABAN
-![Praktikum 6](img/P1L6.JPG)  
+![Praktikum 6](img/PIL6.JPG)  
 
 
 Langkah 7: Buat widget baru DisplayPictureScreen
@@ -199,8 +197,6 @@ class DisplayPictureScreen extends StatelessWidget {
   }
 }
 ```
-## JAWABAN
-![Praktikum 7](img/P1L7.JPG)  
 Langkah 8: Edit main.dart
 Edit pada file ini bagian runApp seperti kode berikut.
 
@@ -222,7 +218,7 @@ runApp(
 
 ---
 ## JAWABAN
-![Praktikum 8](img/P1L8.JPG)  
+![Praktikum 8](img/PIL8.JPG)  
 
 
 Langkah 9: Menampilkan hasil foto
