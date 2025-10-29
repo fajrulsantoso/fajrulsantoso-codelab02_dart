@@ -34,4 +34,5 @@ final firstCamera = cameras.first;
 ```
 
 ---
-
+## JAWABAN
+![Praktikum 2](img/P1L3.JPG)  
