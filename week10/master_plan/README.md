@@ -86,3 +86,133 @@ class MasterPlanApp extends StatelessWidget {
 ---
 ## JAWABAN
 ![Praktikum 3](img/PIL3.JPG) 
+
+
+## Langkah 6: buat plan_screen.dart
+Pada folder views, buatlah sebuah file plan_screen.dart dan gunakan templat StatefulWidget untuk membuat class PlanScreen. Isi kodenya adalah sebagai berikut. Gantilah teks ‘Namaku' dengan nama panggilan Anda pada title AppBar.
+
+### 💻 Source Code  
+```dart
+import '../models/data_layer.dart';
+import 'package:flutter/material.dart';
+
+class PlanScreen extends StatefulWidget {
+  const PlanScreen({super.key});
+
+  @override
+  State createState() => _PlanScreenState();
+}
+
+class _PlanScreenState extends State<PlanScreen> {
+  Plan plan = const Plan();
+
+  @override
+  Widget build(BuildContext context) {
+   return Scaffold(
+    // ganti ‘Namaku' dengan Nama panggilan Anda
+    appBar: AppBar(title: const Text('Master Plan Namaku')),
+    body: _buildList(),
+    floatingActionButton: _buildAddTaskButton(),
+   );
+  }
+}
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
+
+
+
+## Langkah 7: buat method _buildAddTaskButton()
+Anda akan melihat beberapa error di langkah 6, karena method yang belum dibuat. Ayo kita buat mulai dari yang paling mudah yaitu tombol Tambah Rencana. Tambah kode berikut di bawah method build di dalam class _PlanScreenState.
+
+
+### 💻 Source Code  
+```dart
+Widget _buildAddTaskButton() {
+  return FloatingActionButton(
+   child: const Icon(Icons.add),
+   onPressed: () {
+     setState(() {
+      plan = Plan(
+       name: plan.name,
+       tasks: List<Task>.from(plan.tasks)
+       ..add(const Task()),
+     );
+    });
+   },
+  );
+}
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
+
+## Langkah 8: buat widget _buildList()
+Kita akan buat widget berupa List yang dapat dilakukan scroll, yaitu ListView.builder. Buat widget ListView seperti kode berikut ini.
+
+
+### 💻 Source Code  
+```dart
+Widget _buildList() {
+  return ListView.builder(
+   itemCount: plan.tasks.length,
+   itemBuilder: (context, index) =>
+   _buildTaskTile(plan.tasks[index], index),
+  );
+}
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
+
+## Langkah 9: buat widget _buildTaskTile
+Dari langkah 8, kita butuh ListTile untuk menampilkan setiap nilai dari plan.tasks. Kita buat dinamis untuk setiap index data, sehingga membuat view menjadi lebih mudah. Tambahkan kode berikut ini.
+
+### 💻 Source Code  
+```dart
+Widget _buildTaskTile(Task task, int index) {
+    return ListTile(
+      leading: Checkbox(
+          value: task.complete,
+          onChanged: (selected) {
+            setState(() {
+              plan = Plan(
+                name: plan.name,
+                tasks: List<Task>.from(plan.tasks)
+                  ..[index] = Task(
+                    description: task.description,
+                    complete: selected ?? false,
+                  ),
+              );
+            });
+          }),
+      title: TextFormField(
+        initialValue: task.description,
+        onChanged: (text) {
+          setState(() {
+            plan = Plan(
+              name: plan.name,
+              tasks: List<Task>.from(plan.tasks)
+                ..[index] = Task(
+                  description: text,
+                  complete: task.complete,
+                ),
+            );
+          });
+        },
+      ),
+    );
+  }
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
