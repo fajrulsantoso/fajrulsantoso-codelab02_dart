@@ -867,8 +867,7 @@ void dispose() {
 
 ## Langkah 11: Pindah ke method build
 Letakkan method Widget build berikut di atas void dispose. Gantilah ‘Namaku' dengan nama panggilan Anda.
-
-### 💻 Source Code
+### 💻 Source Code  
 ```dart
 @override
 Widget build(BuildContext context) {
@@ -882,13 +881,14 @@ Widget build(BuildContext context) {
     ),
   );
 }
-
----
+```
 
 ---
 
 ## Langkah 12: Buat widget _buildListCreator
 Buatlah widget berikut setelah widget build.
+### 💻 Source Code  
+```dart
 Widget _buildListCreator() {
   return Column(
     children: [
@@ -908,13 +908,15 @@ Widget _buildListCreator() {
   );
 }
 
----
+```
 
 ---
+
 
 ## Langkah 13: Buat void addPlan()
 Tambahkan method berikut untuk menerima inputan dari user berupa text plan.
 ### 💻 Source Code  
+```dart
 void addPlan() {
   final text = textController.text;
   if (text.isEmpty) {
@@ -928,13 +930,16 @@ void addPlan() {
   setState(() {});
 }
 
----
+
+```
 
 ---
 
 ## Langkah 14: Buat widget _buildMasterPlans()
 Tambahkan widget seperti kode berikut.
 
+### 💻 Source Code  
+```dart
 Widget _buildMasterPlans() {
   ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
   List<Plan> plans = planNotifier.value;
@@ -967,7 +972,9 @@ Widget _buildMasterPlans() {
   );
 }
 
----
+
+
+```
 
 ---
 ## JAWABAN
