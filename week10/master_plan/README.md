@@ -1,3 +1,5 @@
+**Nama:** Fajrul Santoso  
+
 ## Langkah 1: Buat Project Baru
 Buatlah sebuah project flutter baru dengan nama master_plan di folder src week-10 repository GitHub Anda atau sesuai style laporan praktikum yang telah disepakati. Lalu buatlah susunan folder dalam project seperti gambar berikut ini.
 ## JAWABAN
