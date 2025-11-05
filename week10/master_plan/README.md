@@ -216,3 +216,53 @@ Widget _buildTaskTile(Task task, int index) {
 ## JAWABAN
 ![Praktikum 3](img/PIL3.JPG) 
 
+
+## Langkah 10: Tambah Scroll Controller
+Anda dapat menambah tugas sebanyak-banyaknya, menandainya jika sudah beres, dan melakukan scroll jika sudah semakin banyak isinya. Namun, ada salah satu fitur tertentu di iOS perlu kita tambahkan. Ketika keyboard tampil, Anda akan kesulitan untuk mengisi yang paling bawah. Untuk mengatasi itu, Anda dapat menggunakan ScrollController untuk menghapus focus dari semua TextField selama event scroll dilakukan. Pada file plan_screen.dart, tambahkan variabel scroll controller di class State tepat setelah variabel plan.
+
+
+### 💻 Source Code  
+```dart
+late ScrollController scrollController;
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
+
+## Langkah 11: Tambah Scroll Listener
+Tambahkan method initState() setelah deklarasi variabel scrollController seperti kode berikut. 
+
+### 💻 Source Code  
+```dart
+@override
+void initState() {
+  super.initState();
+  scrollController = ScrollController()
+    ..addListener(() {
+      FocusScope.of(context).requestFocus(FocusNode());
+    });
+}
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
+## Langkah 12: Tambah controller dan keyboard behavior
+Tambahkan controller dan keyboard behavior pada ListView di method _buildList seperti kode berikut ini.
+### 💻 Source Code  
+```dart
+return ListView.builder(
+  controller: scrollController,
+ keyboardDismissBehavior: Theme.of(context).platform ==
+ TargetPlatform.iOS
+          ? ScrollViewKeyboardDismissBehavior.onDrag
+          : ScrollViewKeyboardDismissBehavior.manual,
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
+
