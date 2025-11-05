@@ -423,3 +423,174 @@ Hal ini mencegah memory leak dan menjaga performa aplikasi tetap optimal.
 
 ## 6Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati !
 
+
+## 5. Praktikum 2: Mengelola Data Layer dengan InheritedWidget dan InheritedNotifier
+Bagaimana seharusnya Anda mengakses data pada aplikasi?
+
+Beberapa pilihan yang bisa dilakukan adalah meletakkan data dalam satu kelas yang sama sehingga menjadi bagian dari life cycle aplikasi Anda.
+
+Kemudian muncul pertanyaan, bagaimana meletakkan model dalam pohon widget ? sedangkan model bukanlah widget, sehingga tidak akan tampil pada screen.
+
+Solusi yang memungkinkan adalah menggunakan InheritedWidget. Sejauh ini kita hanya menggunakan dua jenis widget, yaitu StatelessWidget dan StatefulWidget. Kedua widget tersebut digunakan untuk layouting UI di screen. Di mana satu bersifat statis dan dinamis. Sedangkan InheritedWidget itu berbeda, ia dapat meneruskan data ke sub-widget turunannya (biasanya ketika Anda menerapkan decomposition widget). Jika dilihat dari perspektif user, itu tidak akan terlihat prosesnya (invisible). InheritedWidget dapat digunakan sebagai pintu untuk komunikasi antara view dan data layers.
+
+Pada codelab ini, kita akan memperbarui kode dari aplikasi Master Plan dengan memisahkan data todo list ke luar class view-nya.
+
+Setelah Anda menyelesaikan praktikum 1, Anda dapat melanjutkan praktikum 2 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda.
+
+## Langkah 1: Buat file plan_provider.dart
+Buat folder baru provider di dalam folder lib, lalu buat file baru dengan nama plan_provider.dart berisi kode seperti berikut.
+
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+import '../models/data_layer.dart';
+
+class PlanProvider extends InheritedNotifier<ValueNotifier<Plan>> {
+  const PlanProvider({super.key, required Widget child, required
+   ValueNotifier<Plan> notifier})
+  : super(child: child, notifier: notifier);
+
+  static ValueNotifier<Plan> of(BuildContext context) {
+   return context.
+    dependOnInheritedWidgetOfExactType<PlanProvider>()!.notifier!;
+  }
+}
+```
+
+---
+
+## Langkah 2: Edit main.dart
+Gantilah pada bagian atribut home dengan PlanProvider seperti berikut. Jangan lupa sesuaikan bagian impor jika dibutuhkan.
+### 💻 Source Code  
+```dart
+return MaterialApp(
+  theme: ThemeData(primarySwatch: Colors.purple),
+  home: PlanProvider(
+    notifier: ValueNotifier<Plan>(const Plan()),
+    child: const PlanScreen(),
+   ),
+);
+```
+
+---
+
+## Langkah 3: Tambah method pada model plan.dart
+Tambahkan dua method di dalam model class Plan seperti kode berikut.
+### 💻 Source Code  
+```dart
+int get completedCount => tasks
+  .where((task) => task.complete)
+  .length;
+
+String get completenessMessage =>
+  '$completedCount out of ${tasks.length} tasks';
+```
+
+---
+
+## Langkah 4: Pindah ke PlanScreen
+Edit PlanScreen agar menggunakan data dari PlanProvider. Hapus deklarasi variabel plan (ini akan membuat error). Kita akan perbaiki pada langkah 5 berikut ini
+## Langkah 5: Edit method _buildAddTaskButton
+Tambahkan BuildContext sebagai parameter dan gunakan PlanProvider sebagai sumber datanya. Edit bagian kode seperti berikut.
+### 💻 Source Code  
+```dart
+Widget _buildAddTaskButton(BuildContext context) {
+  ValueNotifier<Plan> planNotifier = PlanProvider.of(context);
+  return FloatingActionButton(
+    child: const Icon(Icons.add),
+    onPressed: () {
+      Plan currentPlan = planNotifier.value;
+      planNotifier.value = Plan(
+        name: currentPlan.name,
+        tasks: List<Task>.from(currentPlan.tasks)..add(const Task()),
+      );
+    },
+  );
+}
+```
+
+---
+
+## Langkah 6: Edit method _buildTaskTile
+Tambahkan parameter BuildContext, gunakan PlanProvider sebagai sumber data. Ganti TextField menjadi TextFormField untuk membuat inisial data provider menjadi lebih mudah
+
+### 💻 Source Code  
+```dart
+Widget _buildTaskTile(Task task, int index, BuildContext context) {
+  ValueNotifier<Plan> planNotifier = PlanProvider.of(context);
+  return ListTile(
+    leading: Checkbox(
+       value: task.complete,
+       onChanged: (selected) {
+         Plan currentPlan = planNotifier.value;
+         planNotifier.value = Plan(
+           name: currentPlan.name,
+           tasks: List<Task>.from(currentPlan.tasks)
+             ..[index] = Task(
+               description: task.description,
+               complete: selected ?? false,
+             ),
+         );
+       }),
+    title: TextFormField(
+      initialValue: task.description,
+      onChanged: (text) {
+        Plan currentPlan = planNotifier.value;
+        planNotifier.value = Plan(
+          name: currentPlan.name,
+          tasks: List<Task>.from(currentPlan.tasks)
+            ..[index] = Task(
+              description: text,
+              complete: task.complete,
+            ),
+        );
+      },
+```
+
+---
+## Langkah 7: Edit _buildList
+Sesuaikan parameter pada bagian _buildTaskTile seperti kode berikut.
+
+### 💻 Source Code  
+```dart
+Widget _buildList(Plan plan) {
+   return ListView.builder(
+     controller: scrollController,
+     itemCount: plan.tasks.length,
+     itemBuilder: (context, index) =>
+        _buildTaskTile(plan.tasks[index], index, context),
+   );
+}
+```
+
+---
+
+## Langkah 8: Tetap di class PlanScreen
+Edit method build sehingga bisa tampil progress pada bagian bawah (footer). Caranya, bungkus (wrap) _buildList dengan widget Expanded dan masukkan ke dalam widget Column seperti kode pada Langkah 9.
+
+## Langkah 9: Tambah widget SafeArea
+Terakhir, tambahkan widget SafeArea dengan berisi completenessMessage pada akhir widget Column. Perhatikan kode berikut ini.
+
+### 💻 Source Code  
+```dart
+@override
+Widget build(BuildContext context) {
+   return Scaffold(
+     appBar: AppBar(title: const Text('Master Plan')),
+     body: ValueListenableBuilder<Plan>(
+       valueListenable: PlanProvider.of(context),
+       builder: (context, plan, child) {
+         return Column(
+           children: [
+             Expanded(child: _buildList(plan)),
+             SafeArea(child: Text(plan.completenessMessage))
+           ],
+         );
+       },
+     ),
+     floatingActionButton: _buildAddTaskButton(context),
+   );
+}
+```
+
+---
