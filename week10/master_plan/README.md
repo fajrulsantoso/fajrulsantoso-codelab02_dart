@@ -858,7 +858,8 @@ final textController = TextEditingController();
 void dispose() {
   textController.dispose();
   super.dispose();
-}```
+}
+```
 
 ---
 
