@@ -266,3 +266,19 @@ return ListView.builder(
 ## JAWABAN
 ![Praktikum 3](img/PIL3.JPG) 
 
+
+## Langkah 13: Terakhir, tambah method dispose()
+Terakhir, tambahkan method dispose() berguna ketika widget sudah tidak digunakan lagi.
+
+### 💻 Source Code  
+```dart
+@override
+void dispose() {
+  scrollController.dispose();
+  super.dispose();
+}
+```
+
+---
+## JAWABAN
+![Praktikum 3](img/PIL3.JPG) 
