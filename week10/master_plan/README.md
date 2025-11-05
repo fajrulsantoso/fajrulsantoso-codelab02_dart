@@ -959,5 +959,48 @@ PlanScreen(plan: plan,)));
 ---
 
 ---
+## JAWABAN
+![Praktikum 3](img/P3L15.JPG) 
 
+8. Tugas Praktikum 3: State di Multiple Screens
+## 1 Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki sesuai dengan tujuan aplikasi tersebut dibuat.
+## 2 Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!
+## JAWABAN
+
+MaterialApp
+Adalah root aplikasi Flutter yang menjadi entry point (dideklarasikan di main.dart).
+
+PlanProvider
+Berfungsi sebagai state manager yang menyimpan dan membagikan data antar screen.
+Provider ini menggunakan InheritedNotifier<ValueNotifier<List<Plan>>>, artinya setiap kali ada perubahan dalam daftar Plan, seluruh widget yang bergantung pada provider ini akan otomatis diperbarui (rebuild).
+
+PlanCreatorScreen (halaman utama)
+Menampilkan:
+
+TextField: untuk membuat plan baru.
+
+ListView: untuk menampilkan daftar plan yang sudah dibuat.
+
+Saat tombol ditekan, data plan baru ditambahkan ke provider, dan halaman berpindah ke PlanScreen.
+
+Navigator.push()
+Mengirim objek Plan tertentu ke halaman berikutnya (PlanScreen) untuk menampilkan detail dan daftar tugas.
+
+PlanScreen (halaman detail plan)
+Menampilkan daftar Task dalam sebuah Plan.
+
+Pengguna dapat menambah, mengubah, atau menandai task selesai.
+
+Progress plan ditampilkan di bagian bawah (SafeArea) melalui plan.completenessMessage.
+
+## 4 Lakukan capture hasil dari Langkah 14 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
+
+## JAWABAN
+![Praktikum 3](img/P3L15.JPG)
+![Praktikum 3](img/P3L16.JPG) 
+![Praktikum 3](img/P3L17.JPG) 
+![Praktikum 3](img/P3L18.JPG) 
+![Praktikum 3](img/P3L19.JPG) 
+
+## Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati !
 
