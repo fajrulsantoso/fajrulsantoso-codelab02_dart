@@ -280,3 +280,146 @@ Langkah 14: Hasil
 Lakukan Hot restart (bukan hot reload) pada aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gambar berikut. Jika masih terdapat error, silakan diperbaiki hingga bisa running.
 ## JAWABAN
 ![Praktikum 3](img/L14P1.JPG) 
+
+
+Tugas Praktikum 1: Dasar State dengan Model-View
+## 1Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki.
+## 2Jelaskan maksud dari langkah 4 pada praktikum tersebut! Mengapa dilakukan demikian?
+
+### 💻 Pada **Langkah 4**, kita membuat kelas `Task` di file `task.dart`:
+```dart
+class Task {
+  final String description;
+  final bool complete;
+
+  const Task({
+    this.complete = false,
+    this.description = '',
+  });
+}
+```
+
+---
+## JAWABAN
+Langkah ini dilakukan untuk memisahkan data dari tampilan (UI).
+Kelas Task berperan sebagai model data, yang menyimpan atribut setiap tugas, seperti:
+
+description → teks deskripsi tugas
+
+complete → status apakah tugas sudah selesai atau belum
+
+Dengan membuat model terpisah, struktur kode menjadi lebih rapi, modular, dan mudah dikembangkan.
+Pendekatan ini mengikuti prinsip Model–View separation
+
+## 3Mengapa perlu variabel plan di langkah 6 pada praktikum tersebut? Mengapa dibuat konstanta ?
+### 💻 Pada **Langkah 4**, kita membuat kelas `Task` di file `task.dart`:
+```dart
+Plan plan = const Plan(name: 'Rencana Harian');
+
+```
+
+---
+## JAWABAN
+ariabel plan dibutuhkan karena aplikasi ini tidak hanya menampilkan tugas tunggal, tetapi mengelola daftar banyak tugas (tasks) yang disimpan di dalam objek Plan.
+Objek Plan ini bertindak sebagai state utama (sumber kebenaran data) di aplikasi.
+
+Mengapa menggunakan const?
+
+Karena pada saat inisialisasi, data Plan masih statis dan belum berubah.
+
+Flutter menyarankan penggunaan const untuk efisiensi memori pada objek yang tidak berubah.
+
+Setiap kali ada perubahan (seperti menambah atau mengedit tugas), data diubah dengan membuat salinan baru dari Plan menggunakan setState().
+
+## 4Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
+### 💻Pada Langkah 9, dibuat widget _buildTaskTile() yang bertugas menampilkan setiap task dalam bentuk ListTile berisi Checkbox dan TextFormField:
+```dart
+Widget _buildTaskTile(Task task, int index) {
+  return ListTile(
+    leading: Checkbox(
+      value: task.complete,
+      onChanged: (selected) {
+        setState(() {
+          plan = Plan(
+            name: plan.name,
+            tasks: List<Task>.from(plan.tasks)
+              ..[index] = Task(
+                description: task.description,
+                complete: selected ?? false,
+              ),
+          );
+        });
+      },
+    ),
+    title: TextFormField(
+      initialValue: task.description,
+      onChanged: (text) {
+        setState(() {
+          plan = Plan(
+            name: plan.name,
+            tasks: List<Task>.from(plan.tasks)
+              ..[index] = Task(description: text, complete: task.complete),
+          );
+        });
+      },
+      decoration: const InputDecoration(
+        hintText: 'Tulis deskripsi tugas...',
+        border: InputBorder.none,
+      ),
+    ),
+  );
+}
+
+
+```
+
+---
+## JAWABAN
+Widget ini menampilkan satu baris tugas dengan dua elemen: kotak centang dan kolom teks.
+
+Saat kotak centang diklik atau teks diubah, fungsi setState() dijalankan untuk memperbarui daftar tasks di dalam plan.
+
+UI akan otomatis menyegarkan diri dengan nilai terbaru dari model.
+![Praktikum 3](img/l9P1.JPG)
+
+
+## 5Apa kegunaan method pada Langkah 11 dan 13 dalam lifecyle state ?
+```dart
+@override
+void initState() {
+  super.initState();
+  scrollController = ScrollController()
+    ..addListener(() {
+      FocusScope.of(context).requestFocus(FocusNode());
+    });
+}
+
+```
+
+---
+## JAWABAN
+Dipanggil saat widget pertama kali dibuat (initialized).
+
+Di sini, ScrollController digunakan untuk mengatur perilaku saat pengguna melakukan scroll pada daftar tugas.
+
+Tujuan listener ini adalah menghapus fokus dari TextField saat daftar di-scroll, agar keyboard otomatis tertutup — terutama untuk pengguna iOS.
+
+```dart
+@override
+void dispose() {
+  scrollController.dispose();
+  super.dispose();
+}
+
+```
+
+---
+## jawaban 
+Dipanggil saat widget dihapus dari layar (disposed).
+
+Digunakan untuk membersihkan resource yang digunakan, seperti ScrollController.
+
+Hal ini mencegah memory leak dan menjaga performa aplikasi tetap optimal.
+
+## 6Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati !
+
