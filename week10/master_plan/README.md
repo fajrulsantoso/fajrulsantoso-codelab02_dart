@@ -1,5 +1,7 @@
 ## Langkah 1: Buat Project Baru
 Buatlah sebuah project flutter baru dengan nama master_plan di folder src week-10 repository GitHub Anda atau sesuai style laporan praktikum yang telah disepakati. Lalu buatlah susunan folder dalam project seperti gambar berikut ini.
+## JAWABAN
+![Praktikum 3](img/L1P1.JPG)
 
 ## Langkah 2: Membuat model task.dart
 Praktik terbaik untuk memulai adalah pada lapisan data (data layer). Ini akan memberi Anda gambaran yang jelas tentang aplikasi Anda, tanpa masuk ke detail antarmuka pengguna Anda. Di folder model, buat file bernama task.dart dan buat class Task. Class ini memiliki atribut description dengan tipe data String dan complete dengan tipe data Boolean, serta ada konstruktor. Kelas ini akan menyimpan data tugas untuk aplikasi kita. Tambahkan kode berikut: 
@@ -20,7 +22,7 @@ class Task {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG)
+![Praktikum 3](img/L2P1.JPG)
 
 
 ## Langkah 3: Buat file plan.dart
@@ -42,7 +44,6 @@ class Plan {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 4: Buat file data_layer.dart
@@ -57,7 +58,6 @@ export 'task.dart';
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 ## Langkah 5: Pindah ke file main.dart
 Ubah isi kode main.dart sebagai berikut. 
@@ -85,7 +85,6 @@ class MasterPlanApp extends StatelessWidget {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 6: buat plan_screen.dart
@@ -120,7 +119,6 @@ class _PlanScreenState extends State<PlanScreen> {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 
@@ -149,7 +147,6 @@ Widget _buildAddTaskButton() {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 8: buat widget _buildList()
@@ -169,7 +166,6 @@ Widget _buildList() {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 9: buat widget _buildTaskTile
@@ -214,7 +210,7 @@ Widget _buildTaskTile(Task task, int index) {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
+![Praktikum 3](img/l9P1.JPG)
 
 
 ## Langkah 10: Tambah Scroll Controller
@@ -228,7 +224,6 @@ late ScrollController scrollController;
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 11: Tambah Scroll Listener
@@ -248,7 +243,6 @@ void initState() {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 ## Langkah 12: Tambah controller dan keyboard behavior
 Tambahkan controller dan keyboard behavior pada ListView di method _buildList seperti kode berikut ini.
@@ -264,7 +258,6 @@ return ListView.builder(
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
 
 
 ## Langkah 13: Terakhir, tambah method dispose()
@@ -281,4 +274,7 @@ void dispose() {
 
 ---
 ## JAWABAN
-![Praktikum 3](img/PIL3.JPG) 
+Langkah 14: Hasil
+Lakukan Hot restart (bukan hot reload) pada aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gambar berikut. Jika masih terdapat error, silakan diperbaiki hingga bisa running.
+## JAWABAN
+![Praktikum 3](img/L14P1.JPG) 
