@@ -867,18 +867,20 @@ void dispose() {
 Letakkan method Widget build berikut di atas void dispose. Gantilah ‘Namaku' dengan nama panggilan Anda.
 
 ### 💻 Source Code  
-```dart
+```
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    // ganti ‘Namaku' dengan nama panggilan Anda
-    appBar: AppBar(title: const Text('Master Plans Namaku')),
-    body: Column(children: [
-      _buildListCreator(),
-      Expanded(child: _buildMasterPlans())
-    ]),
+    appBar: AppBar(title: const Text('Master Plans Fajrul Santoso')),
+    body: Column(
+      children: [
+        _buildListCreator(),
+        Expanded(child: _buildMasterPlans())
+      ],
+    ),
   );
 }
+
 ---
 
 ---
