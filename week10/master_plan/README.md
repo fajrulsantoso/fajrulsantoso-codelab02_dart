@@ -863,11 +863,13 @@ void dispose() {
 
 ---
 
-### Langkah 11: Pindah ke method build
+# Praktikum 3: State di Multiple Screens
+
+## Langkah 11: Pindah ke method build
 Letakkan method Widget build berikut di atas void dispose. Gantilah ‘Namaku' dengan nama panggilan Anda.
 
-### 💻 Source Code  
-```
+### 💻 Source Code
+```dart
 @override
 Widget build(BuildContext context) {
   return Scaffold(
@@ -887,19 +889,25 @@ Widget build(BuildContext context) {
 
 ## Langkah 12: Buat widget _buildListCreator
 Buatlah widget berikut setelah widget build.
-### 💻 Source Code  
-```dart
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    // ganti ‘Namaku' dengan nama panggilan Anda
-    appBar: AppBar(title: const Text('Master Plans Namaku')),
-    body: Column(children: [
-      _buildListCreator(),
-      Expanded(child: _buildMasterPlans())
-    ]),
+Widget _buildListCreator() {
+  return Column(
+    children: [
+      TextField(
+        controller: textController,
+        decoration: const InputDecoration(
+          labelText: 'Nama Plan',
+          border: OutlineInputBorder(),
+        ),
+      ),
+      const SizedBox(height: 16),
+      ElevatedButton(
+        onPressed: addPlan,
+        child: const Text('Buat Plan'),
+      ),
+    ],
   );
 }
+
 ---
 
 ---
@@ -907,21 +915,19 @@ Widget build(BuildContext context) {
 ## Langkah 13: Buat void addPlan()
 Tambahkan method berikut untuk menerima inputan dari user berupa text plan.
 ### 💻 Source Code  
-```dart
 void addPlan() {
   final text = textController.text;
-    if (text.isEmpty) {
-      return;
-    }
-    final plan = Plan(name: text, tasks: []);
-    ValueNotifier<List<Plan>> planNotifier =
-PlanProvider.of(context);
-    planNotifier.value = List<Plan>.from(planNotifier.value)..
-add(plan);
-    textController.clear();
-    FocusScope.of(context).requestFocus(FocusNode());
-    setState(() {});
+  if (text.isEmpty) {
+    return;
+  }
+  final plan = Plan(name: text, tasks: []);
+  ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
+  planNotifier.value = List<Plan>.from(planNotifier.value)..add(plan);
+  textController.clear();
+  FocusScope.of(context).requestFocus(FocusNode());
+  setState(() {});
 }
+
 ---
 
 ---
@@ -930,35 +936,37 @@ add(plan);
 Tambahkan widget seperti kode berikut.
 
 Widget _buildMasterPlans() {
-### 💻 Source Code  
-```dart
-idget _buildMasterPlans() {
   ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
-    List<Plan> plans = planNotifier.value;
+  List<Plan> plans = planNotifier.value;
 
-    if (plans.isEmpty) {
-      return Column(
-         mainAxisAlignment: MainAxisAlignment.center,
-         children: <Widget>[
-           const Icon(Icons.note, size: 100, color: Colors.grey),
-           Text('Anda belum memiliki rencana apapun.',
-              style: Theme.of(context).textTheme.headlineSmall)
-         ]);
-    }
-    return ListView.builder(
-        itemCount: plans.length,
-        itemBuilder: (context, index) {
-          final plan = plans[index];
-          return ListTile(
-              title: Text(plan.name),
-              subtitle: Text(plan.completenessMessage),
-              onTap: () {
-                Navigator.of(context).push(
-                   MaterialPageRoute(builder: (_) =>
-PlanScreen(plan: plan,)));
-              });
-        });
+  if (plans.isEmpty) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const Icon(Icons.note, size: 100, color: Colors.grey),
+        Text('Anda belum memiliki rencana apapun.',
+            style: Theme.of(context).textTheme.headlineSmall)
+      ],
+    );
+  }
+
+  return ListView.builder(
+    itemCount: plans.length,
+    itemBuilder: (context, index) {
+      final plan = plans[index];
+      return ListTile(
+        title: Text(plan.name),
+        subtitle: Text(plan.completenessMessage),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => PlanScreen(plan: plan)),
+          );
+        },
+      );
+    },
+  );
 }
+
 ---
 
 ---
