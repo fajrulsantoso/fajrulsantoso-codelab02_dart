@@ -31,7 +31,7 @@ dependencies:
 
 ---
 ## JAWABAN
-![Praktikum ](img/L2P1.JPG)
+![Praktikum ](img/P11P1L2.JPG)
 
 
 ## Langkah 3: Buka file main.dart
@@ -102,7 +102,7 @@ class _FuturePageState extends State<FuturePage> {
 
 ---
 ## JAWABAN
-![Praktikum ](img/L2P1.JPG) 
+![Praktikum ](img/P11P1L3.JPG)
 
 
 ## Langkah 4: Tambah method getData()
