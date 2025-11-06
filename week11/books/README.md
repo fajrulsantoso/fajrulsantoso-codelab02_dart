@@ -4,3 +4,13 @@ Buatlah sebuah project flutter baru dengan nama books di folder src week-11 repo
 
 Kemudian Tambahkan dependensi http dengan mengetik perintah berikut di terminal.
 
+
+### 💻 Source Code  
+```dart
+flutter pub add http
+
+```
+
+---
+## JAWABAN
+![Praktikum ](img/L2P1.JPG)
