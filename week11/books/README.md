@@ -536,6 +536,107 @@ Jika Anda menargetkan untuk platform Android, maka tambahkan baris kode berikut 
 ### 💻 Source Code  
 ```dart
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>```
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+```
 
 ---      
+
+## Langkah 4: Buat StatefulWidget
+Buat class LocationScreen di dalam file geolocation.dart
+
+## Langkah 5: Isi kode geolocation.dart
+
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
+
+  @override
+  State<LocationScreen> createState() => _LocationScreenState();
+}
+
+class _LocationScreenState extends State<LocationScreen> {
+  String myPosition = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getPosition().then((Position myPos) {
+      myPosition =
+          'Latitude: ${myPos.latitude.toString()} - Longitude: ${myPos.longitude.toString()}';
+      setState(() {
+        myPosition = myPosition;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location')),
+      body: Center(child: Text(myPosition)),
+    );
+  }
+
+  Future<Position> getPosition() async {
+    await Geolocator.requestPermission();
+    await Geolocator.isLocationServiceEnabled();
+    Position? position = await Geolocator.getCurrentPosition();
+    return position;
+  }
+}
+```
+
+---      
+
+## Soal 11
+Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda. 
+
+## Langkah 6: Edit main.dart
+Panggil screen baru tersebut di file main Anda seperti berikut.
+
+### 💻 Source Code  
+```dart
+home: LocationScreen(),
+```
+
+---      
+
+## Langkah 8: Tambahkan animasi loading
+Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan perubahannya. 
+
+### 💻 Source Code  
+```dart
+@override
+Widget build(BuildContext context) {
+  final myWidget = myPosition == ''
+      ? const CircularProgressIndicator()
+      : const Text(myPosition);
+
+  return Scaffold(
+    appBar: AppBar(title: const Text('Current Location')),
+    body: Center(child: myWidget),
+  );
+}
+```
+
+---      
+
+## Soal 12
+## 1 Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+Agar animasi loading terlihat, tambahkan delay pada getPosition():
+### 💻 Source Code  
+```dart
+await Future.delayed(const Duration(seconds: 3));
+
+```
+
+---      
+Tidak muncul koordinat GPS saat dijalankan di browser, karena plugin geolocator hanya berfungsi di Android/iOS, bukan di Web.
+## 2 Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian? 
+Tidak, koordinat GPS tidak muncul saat dijalankan di browser, karena plugin geolocator hanya mendukung Android dan iOS. Browser tidak dapat mengakses sensor GPS perangkat secara langsung.
+## 3 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12". 
+
