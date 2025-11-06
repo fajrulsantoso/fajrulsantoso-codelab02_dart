@@ -364,3 +364,77 @@ Langkah 6: Menangani hasil Future di UI dengan .then() untuk hasil sukses dan .c
 ## Jawaban
 ![Praktikum ](img/P11P3L6.JPG)
 
+
+
+
+
+## 6. Praktikum 4: Memanggil Future secara paralel
+Ketika Anda membutuhkan untuk menjalankan banyak Future secara bersamaan, ada sebuah class yang dapat Anda gunakan yaitu: FutureGroup.
+
+FutureGroup tersedia di package async, yang mana itu harus diimpor ke file dart Anda, seperti berikut.
+
+import 'package:async/async.dart';
+
+## Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState
+
+### 💻 Source Code  
+```dart
+void returnFG() {
+  FutureGroup<int> futureGroup = FutureGroup<int>();
+  futureGroup.add(returnOneAsync());
+  futureGroup.add(returnTwoAsync());
+  futureGroup.add(returnThreeAsync());
+  futureGroup.close();
+  
+  futureGroup.future.then(((List<int> value) {
+    int total = 0;
+    for (var element in value) {
+      total += element;
+    }
+    
+    setState(() {
+      result = total.toString();
+    });
+  }));
+}
+```
+
+---     
+
+## Langkah 2: Edit onPressed()
+Anda bisa hapus atau comment kode sebelumnya, kemudian panggil method dari langkah 1 tersebut.  
+### 💻 Source Code  
+```dart
+onPressed: () {
+  returnFG();
+}
+```
+
+---       
+
+## Langkah 3: Run
+Anda akan melihat hasilnya dalam 3 detik berupa angka 6 lebih cepat dibandingkan praktikum sebelumnya menunggu sampai 9 detik. 
+## Soal 7
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7". 
+![Praktikum ](img/P11P4L3.JPG)
+
+
+## Langkah 4: Ganti variabel futureGroup
+Anda dapat menggunakan FutureGroup dengan Future.wait seperti kode berikut. 
+### 💻 Source Code  
+```dart
+final futures = Future.wait<int>([
+  returnOneAsync(),
+  returnTwoAsync(),
+  returnThreeAsync(),
+]);
+```
+
+---      
+
+
+## Soal 8
+## Jelaskan maksud perbedaan kode langkah 1 dan 4! 
+perbedaan utama adalah pada cara mengelola kumpulan Future.
+Langkah 1 menggunakan FutureGroup dari package tambahan, sedangkan Langkah 4 memakai Future.wait yang lebih sederhana dan native di Dart.
