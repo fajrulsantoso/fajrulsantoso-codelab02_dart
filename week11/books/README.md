@@ -295,3 +295,17 @@ Future calculate() async {
 
 ---   
 
+
+## Langkah 3: Ganti isi kode onPressed()
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+### 💻 Source Code  
+```dart
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+});
+```
+
+---   
+
