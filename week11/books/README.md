@@ -154,4 +154,9 @@ ElevatedButton(
 ),
 ```
 
----
+--- 
+
+## Soal 3
+Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
+## Jawaban
