@@ -130,4 +130,28 @@ Kemudian cobalah akses di browser URI tersebut dengan lengkap seperti ini. Jika 
 
 ## JAWABAN
 ![Praktikum ](img/JW1_2.JPG) 
-![Praktikum ](img/JW2_2.JPG) 
+![Praktikum ](img/JW2_2.JPG)  
+
+
+## Langkah 5: Tambah kode di ElevatedButton
+Tambahkan kode pada onPressed di ElevatedButton seperti berikut. 
+
+### 💻 Source Code  
+```dart
+ElevatedButton(
+  child: Text('GO!'),
+  onPressed: () {
+    setState(() {});
+    getData()
+      .then((value) {
+        result = value.body.toString().substring(0, 450);
+        setState(() {});
+      }).catchError((_) {
+        result = 'An error occurred';
+        setState(() {});
+      });
+  },
+),
+```
+
+---
