@@ -510,3 +510,13 @@ Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya?
 | **Langkah 1** | Menggunakan **`.then()`, `.catchError()`, dan `.whenComplete()`**                     | Penanganan error dilakukan dengan **callback chaining** (berantai).                     | Menangani error setelah Future selesai dengan `catchError`.                                    |
 | **Langkah 4** | Menggunakan **`try-catch-finally`** di dalam fungsi **async/await** (`handleError()`) | Penanganan error dilakukan lebih **sederhana dan terstruktur** dengan blok `try-catch`. | Lebih mudah dibaca dan di-debug; pesan **"Something terrible happened!"** muncul dari `catch`. |
 
+
+
+## 8. Praktikum 6: Menggunakan Future dengan StatefulWidget
+Seperti yang Anda telah pelajari, Stateless widget tidak dapat menyimpan informasi (state), StatefulWidget dapat mengelola variabel dan properti dengan method setState(), yang kemudian dapat ditampilkan pada UI. State adalah informasi yang dapat berubah selama life cycle widget itu berlangsung.
+
+Ada 4 method utama dalam life cycle StatefullWidget:
+
+initState(): dipanggil sekali ketika state dibangun. Bisa dikatakan ini juga sebagai konstruktor class.
+build(): dipanggil setiap kali ada perubahan state atau UI. Method ini melakukan destroy UI dan membangun ulang dari nol.
+deactive() dan dispose(): digunakan untuk menghapus widget dari tree, pada beberapa kasus dimanfaatkan untuk menutup koneksi ke database atau menyimpan data sebelum berpindah screen.
