@@ -419,3 +419,22 @@ Anda akan melihat hasilnya dalam 3 detik berupa angka 6 lebih cepat dibandingkan
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7". 
 ![Praktikum ](img/P11P4L3.JPG)
 
+
+## Langkah 4: Ganti variabel futureGroup
+Anda dapat menggunakan FutureGroup dengan Future.wait seperti kode berikut. 
+### 💻 Source Code  
+```dart
+final futures = Future.wait<int>([
+  returnOneAsync(),
+  returnTwoAsync(),
+  returnThreeAsync(),
+]);
+```
+
+---      
+
+
+## Soal 8
+Jelaskan maksud perbedaan kode langkah 1 dan 4! 
+perbedaan utama adalah pada cara mengelola kumpulan Future.
+Langkah 1 menggunakan FutureGroup dari package tambahan, sedangkan Langkah 4 memakai Future.wait yang lebih sederhana dan native di Dart.
