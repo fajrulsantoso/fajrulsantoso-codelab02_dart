@@ -33,27 +33,49 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
-  // ✅ Langkah 2: Tambahkan variabel late Completer
-  late Completer<int> completer;
+  // ✅ Method FutureGroup
+  void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
 
-  // ✅ Method getNumber() yang mengembalikan Future
-  Future<int> getNumber() {
-    completer = Completer<int>();
-    calculate(); // Jalankan method calculate()
-    return completer.future;
+    // Menambahkan 3 Future berbeda dengan waktu 1–3 detik
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+
+    futureGroup.future
+        .then((List<int> value) {
+          int total = 0;
+          for (var element in value) {
+            total += element;
+          }
+
+          setState(() {
+            result = total.toString(); // tampilkan hasil penjumlahan
+          });
+        })
+        .catchError((error) {
+          // ✅ Tambahkan penanganan error agar tidak muncul "An error occurred"
+          setState(() {
+            result = 'Terjadi kesalahan: $error';
+          });
+        });
   }
 
-  // ✅ Langkah 5: Method calculate() dengan penanganan error
-  Future<void> calculate() async {
-    try {
-      await Future.delayed(const Duration(seconds: 3)); // simulasi proses
-      // Aktifkan baris berikut untuk mengetes error:
-      throw Exception('Simulasi error');
-      // Jika tidak error, kamu bisa ganti dengan:
-      // completer.complete(42);
-    } catch (e) {
-      completer.completeError(e); // Jika error, kirim error ke Future
-    }
+  // ✅ Fungsi tambahan untuk FutureGroup
+  Future<int> returnOneAsync() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return 1;
+  }
+
+  Future<int> returnTwoAsync() async {
+    await Future.delayed(const Duration(seconds: 2));
+    return 2;
+  }
+
+  Future<int> returnThreeAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 3;
   }
 
   @override
@@ -67,18 +89,7 @@ class _FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                getNumber()
-                    .then((value) {
-                      setState(() {
-                        result = value
-                            .toString(); // tampilkan hasil jika sukses
-                      });
-                    })
-                    .catchError((error) {
-                      setState(() {
-                        result = 'An error occurred'; // tampilkan jika gagal
-                      });
-                    });
+                returnFG(); // memanggil method FutureGroup
               },
             ),
             const Spacer(),
