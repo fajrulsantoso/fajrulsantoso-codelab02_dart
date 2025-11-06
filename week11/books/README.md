@@ -482,3 +482,23 @@ Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut.
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9". 
 ![Praktikum ](img/P11P5L3.JPG)
 
+## Langkah 4: Tambah method handleError()
+Tambahkan kode ini di dalam class _FutureStatePage 
+### 💻 Source Code  
+```dart
+Future handleError() async {
+  try {
+    await returnError();
+  } catch (error) {
+    setState(() {
+      result = error.toString();
+    });
+  } finally {
+    print('Complete');
+  }
+}
+```
+
+---      
+
+ 
