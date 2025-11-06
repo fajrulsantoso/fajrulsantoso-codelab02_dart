@@ -163,4 +163,41 @@ Kode substring(0, 450) berfungsi menampilkan hanya 450 karakter pertama dari dat
 Sedangkan catchError digunakan untuk menangani kesalahan saat mengambil data dari API, sehingga jika terjadi error, aplikasi tidak crash dan menampilkan pesan “An error occurred”.
 ## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
 ## Jawaban
-![Praktikum ](img/JW2_2.JPG)  
+![Praktikum ](img/JW3.JPG)  
+
+
+
+
+
+
+
+
+
+## 4. Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+Ada alternatif penggunaan Future yang lebih clean, mudah dibaca dan dirawat, yaitu pola async/await. Intinya pada dua kata kunci ini:
+
+async digunakan untuk menandai suatu method sebagai asynchronous dan itu harus ditambahkan di depan kode function.
+await digunakan untuk memerintahkan menunggu sampai eksekusi suatu function itu selesai dan mengembalikan sebuah value. Untuk then bisa digunakan pada jenis method apapun, sedangkan await hanya bekerja di dalam method async. 
+
+## Langkah 1: Buka file main.dart
+Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageState. 
+
+### 💻 Source Code  
+```dart
+Future<int> returnOneAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 1;
+}
+
+Future<int> returnTwoAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 2;
+}
+
+Future<int> returnThreeAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 3;
+}
+```
+
+--- 
