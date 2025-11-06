@@ -49,6 +49,6 @@ Future<http.Response> getData() async {
 ---
 ## JAWABAN
 ![Praktikum ](img/L2P1.JPG) 
-
+  
 
 
