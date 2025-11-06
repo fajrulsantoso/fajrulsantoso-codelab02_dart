@@ -321,3 +321,46 @@ Artinya, proses asynchronous selesai setelah 5 detik dan menghasilkan nilai 42.
 ## JAWABAN 
 ![Praktikum ](img/P11P3L4.JPG)
 
+## Langkah 5: Ganti method calculate()
+Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membuat calculate2()
+### 💻 Source Code  
+```dart
+calculate() async {
+  try {
+    await new Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
+    
+    // throw Exception(); // Bagian ini dikomentari di gambar
+  } catch (_) {
+    completer.completeError({});
+  }
+}
+```
+
+---    
+
+## Langkah 6: Pindah ke onPressed()
+Ganti menjadi kode seperti berikut.
+### 💻 Source Code  
+```dart
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+}).catchError((e) {
+  result = 'An error occurred';
+});
+```
+
+---    
+
+## Soal 6
+## 1 Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+## Jawaban
+Langkah 5: Menambahkan try–catch pada calculate() untuk menangani dua kemungkinan — sukses (complete()) atau gagal (completeError()).
+Langkah 6: Menangani hasil Future di UI dengan .then() untuk hasil sukses dan .catchError() untuk menampilkan pesan “An error occurred” jika terjadi error. 
+
+## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6". 
+## Jawaban
+![Praktikum ](img/P11P3L6.JPG)
+
