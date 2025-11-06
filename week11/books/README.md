@@ -12,8 +12,6 @@ flutter pub add http
 ```
 
 ---
-## JAWABAN
-![Praktikum ](img/L2P1.JPG)
 
 
 ## Langkah 2: Cek file pubspec.yaml
