@@ -38,6 +38,79 @@ dependencies:
 Ketiklah kode seperti berikut ini. 
 ### 💻 Source Code  
 ```dart
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Future Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: const FuturePage(),
+    );
+  }
+}
+
+class FuturePage extends StatefulWidget {
+  const FuturePage({super.key});
+
+  @override
+  State<FuturePage> createState() => _FuturePageState();
+}
+
+class _FuturePageState extends State<FuturePage> {
+  String result = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Back from the Future'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const Spacer(),
+            ElevatedButton(
+              child: const Text('GO!'),
+              onPressed: () {}, // Seperti di gambar, onPressed kosong
+            ),
+            const Spacer(),
+            Text(result),
+            const Spacer(),
+            const CircularProgressIndicator(),
+            const Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+---
+## JAWABAN
+![Praktikum ](img/L2P1.JPG) 
+
+
+## Langkah 4: Tambah method getData()
+Tambahkan method ini ke dalam class _FuturePageState yang berguna untuk mengambil data dari API Google Books.
+
+
+### 💻 Source Code  
+```dart
 Future<http.Response> getData() async {
   const authority = 'www.googleapis.com';
   const path = '/books/v1/volumes/junbDWAQBAJ';
@@ -49,6 +122,12 @@ Future<http.Response> getData() async {
 ---
 ## JAWABAN
 ![Praktikum ](img/L2P1.JPG) 
-  
 
 
+## Soal 2
+Carilah judul buku favorit Anda di Google Books, lalu ganti ID buku pada variabel path di kode tersebut. Caranya ambil di URL browser Anda seperti gambar berikut ini. 
+Kemudian cobalah akses di browser URI tersebut dengan lengkap seperti ini. Jika menampilkan data JSON, maka Anda telah berhasil. Lakukan capture milik Anda dan tulis di README pada laporan praktikum. Lalu lakukan commit dengan pesan "W11: Soal 2".
+
+## JAWABAN
+![Praktikum ](img/JW1_2.JPG) 
+![Praktikum ](img/JW2_2.JPG) 
