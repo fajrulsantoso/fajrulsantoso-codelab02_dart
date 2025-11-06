@@ -200,4 +200,44 @@ Future<int> returnThreeAsync() async {
 }
 ```
 
---- 
+---   
+
+## Langkah 2: Tambah method count()
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya. 
+
+### 💻 Source Code  
+```dart
+Future count() async {
+  int total = 0;
+  total = await returnOneAsync();
+  total += await returnTwoAsync();
+  total += await returnThreeAsync();
+  setState(() {
+    result = total.toString();
+  });
+}
+```
+
+---   
+
+
+## Langkah 3: Panggil count()
+Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut. 
+### 💻 Source Code  
+```dart
+ElevatedButton(
+  child: Text('GO!'),
+  onPressed: () {
+    count();
+  },
+)
+```
+
+---   
+
+
+Langkah 4: Run
+Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+## jawaban 
+![Praktikum ](img/P11P2L4.JPG)
+
