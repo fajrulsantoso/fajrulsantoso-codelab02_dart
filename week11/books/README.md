@@ -238,6 +238,18 @@ ElevatedButton(
 
 Langkah 4: Run
 Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+Soal 4
+## 1 Jelaskan maksud kode langkah 1 dan 2 tersebut! 
+## Langkah 1:
+Tiga method returnOneAsync(), returnTwoAsync(), dan returnThreeAsync() digunakan untuk mensimulasikan proses asynchronous (seperti pengambilan data dari server).
+Masing-masing menunggu selama 3 detik menggunakan Future.delayed() lalu mengembalikan nilai 1, 2, dan 3.
+
+## Langkah 2:
+Method count() menjalankan ketiga method tersebut secara berurutan menggunakan await.
+Setiap hasil ditambahkan ke variabel total, lalu hasil akhirnya ditampilkan ke layar melalui setState().
+Tujuannya adalah untuk menunjukkan cara kerja async/await dalam menjalankan beberapa proses asynchronous secara berurutan dan menampilkan hasil akhirnya ke UI.
+## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 4".
 ## jawaban 
 ![Praktikum ](img/P11P2L4.JPG)
 
