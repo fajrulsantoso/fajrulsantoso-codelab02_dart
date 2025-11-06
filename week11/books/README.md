@@ -319,4 +319,5 @@ getNumber() membuat Future baru dan memanggil calculate(), sedangkan calculate()
 Artinya, proses asynchronous selesai setelah 5 detik dan menghasilkan nilai 42.
 ## 2Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
 ## JAWABAN 
+![Praktikum ](img/P11P3L4.JPG)
 
