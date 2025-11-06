@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:async/async.dart'; // ✅ Langkah 1: import package async
+import 'package:async/async.dart'; // tetap diimpor, meski tidak digunakan langsung
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'fajrul santoso',
+      title: 'Fajrul Santoso',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -33,36 +33,29 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
-  // ✅ Method FutureGroup
-  void returnFG() {
-    FutureGroup<int> futureGroup = FutureGroup<int>();
+  // ✅ Future.wait untuk menjalankan beberapa Future sekaligus
+  void returnFG() async {
+    try {
+      final futures = Future.wait<int>([
+        returnOneAsync(),
+        returnTwoAsync(),
+        returnThreeAsync(),
+      ]);
 
-    // Menambahkan 3 Future berbeda dengan waktu 1–3 detik
-    futureGroup.add(returnOneAsync());
-    futureGroup.add(returnTwoAsync());
-    futureGroup.add(returnThreeAsync());
-    futureGroup.close();
+      final values = await futures;
+      int total = values.reduce((a, b) => a + b);
 
-    futureGroup.future
-        .then((List<int> value) {
-          int total = 0;
-          for (var element in value) {
-            total += element;
-          }
-
-          setState(() {
-            result = total.toString(); // tampilkan hasil penjumlahan
-          });
-        })
-        .catchError((error) {
-          // ✅ Tambahkan penanganan error agar tidak muncul "An error occurred"
-          setState(() {
-            result = 'Terjadi kesalahan: $error';
-          });
-        });
+      setState(() {
+        result = total.toString(); // Hasil: 6
+      });
+    } catch (e) {
+      setState(() {
+        result = 'Terjadi kesalahan: $e';
+      });
+    }
   }
 
-  // ✅ Fungsi tambahan untuk FutureGroup
+  // ✅ Fungsi asynchronous normal
   Future<int> returnOneAsync() async {
     await Future.delayed(const Duration(seconds: 1));
     return 1;
@@ -78,24 +71,57 @@ class _FuturePageState extends State<FuturePage> {
     return 3;
   }
 
+  // ✅ Fungsi untuk uji error
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Back from the Future')),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
+
+            // 🔹 Tombol pertama: Future.wait (hasil angka 6)
             ElevatedButton(
-              child: const Text('GO!'),
+              child: const Text('Run Future.wait'),
+              onPressed: returnFG,
+            ),
+
+            const SizedBox(height: 20),
+
+            // 🔹 Tombol kedua: Uji error Future
+            ElevatedButton(
+              child: const Text('Run Error Test'),
               onPressed: () {
-                returnFG(); // memanggil method FutureGroup
+                returnError()
+                    .then((value) {
+                      setState(() {
+                        result = 'Success';
+                      });
+                    })
+                    .catchError((error) {
+                      setState(() {
+                        // ✅ tampilkan pesan error di layar
+                        result = error.toString();
+                      });
+                    })
+                    .whenComplete(() {
+                      print('Complete');
+                    });
               },
             ),
+
             const Spacer(),
             Text(
               result,
               style: const TextStyle(fontSize: 24, color: Colors.red),
+              textAlign: TextAlign.center,
             ),
             const Spacer(),
             const CircularProgressIndicator(),
