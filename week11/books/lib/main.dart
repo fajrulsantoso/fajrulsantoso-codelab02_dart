@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:async/async.dart'; // ✅ Langkah 1: import package async
 
 void main() {
   runApp(const MyApp());
@@ -32,39 +33,20 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
-  // ✅ Method getData() (sudah tidak digunakan di langkah ini)
-  Future<http.Response> getData() async {
-    const authority = 'www.googleapis.com';
-    const path = '/books/v1/volumes/1bm0DwAAQBAJ';
-    Uri url = Uri.https(authority, path);
-    return http.get(url);
+  // ✅ Langkah 2: Tambahkan variabel late Completer
+  late Completer completer;
+
+  // ✅ Method getNumber() yang mengembalikan Future
+  Future getNumber() {
+    completer = Completer<int>(); // Membuat objek Completer
+    calculate(); // Jalankan proses perhitungan
+    return completer.future; // Kembalikan future untuk ditunggu hasilnya
   }
 
-  // ✅ Langkah 1: Tiga method Future sederhana
-  Future<int> returnOneAsync() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return 1;
-  }
-
-  Future<int> returnTwoAsync() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return 2;
-  }
-
-  Future<int> returnThreeAsync() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return 3;
-  }
-
-  // ✅ Langkah 2: Method count() menggunakan async/await
-  Future count() async {
-    int total = 0;
-    total = await returnOneAsync();
-    total += await returnTwoAsync();
-    total += await returnThreeAsync();
-    setState(() {
-      result = total.toString(); // Menampilkan hasil penjumlahan
-    });
+  // ✅ Method calculate() yang akan menyelesaikan Future setelah delay 5 detik
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42); // Menyelesaikan Future dengan nilai 42
   }
 
   @override
@@ -75,11 +57,14 @@ class _FuturePageState extends State<FuturePage> {
         child: Column(
           children: [
             const Spacer(),
-            // ✅ Langkah 3: Panggil count() saat tombol ditekan
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                count();
+                getNumber().then((value) {
+                  setState(() {
+                    result = value.toString(); // tampilkan hasil 42
+                  });
+                });
               },
             ),
             const Spacer(),
