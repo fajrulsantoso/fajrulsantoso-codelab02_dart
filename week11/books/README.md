@@ -480,6 +480,7 @@ returnError()
 Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut. 
 ## Soal 9
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9". 
+## Jawaban
 ![Praktikum ](img/P11P5L3.JPG)
 
 ## Langkah 4: Tambah method handleError()
@@ -501,4 +502,11 @@ Future handleError() async {
 
 ---      
 
- 
+ ## Soal 10
+Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4! 
+## Jawaban
+| **Langkah**   | **Cara Menangani Future**                                                             | **Ciri Khas**                                                                           | **Hasil yang Ditampilkan**                                                                     |
+| ------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Langkah 1** | Menggunakan **`.then()`, `.catchError()`, dan `.whenComplete()`**                     | Penanganan error dilakukan dengan **callback chaining** (berantai).                     | Menangani error setelah Future selesai dengan `catchError`.                                    |
+| **Langkah 4** | Menggunakan **`try-catch-finally`** di dalam fungsi **async/await** (`handleError()`) | Penanganan error dilakukan lebih **sederhana dan terstruktur** dengan blok `try-catch`. | Lebih mudah dibaca dan di-debug; pesan **"Something terrible happened!"** muncul dari `catch`. |
+
