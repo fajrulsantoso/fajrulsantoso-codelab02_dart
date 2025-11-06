@@ -291,7 +291,8 @@ Future getNumber() {
 Future calculate() async {
   await Future.delayed(const Duration(seconds : 5));
   completer.complete(42);
-}```
+}
+```
 
 ---   
 
