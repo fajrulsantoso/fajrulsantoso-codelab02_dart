@@ -253,3 +253,45 @@ Tujuannya adalah untuk menunjukkan cara kerja async/await dalam menjalankan bebe
 ## jawaban 
 ![Praktikum ](img/P11P2L4.JPG)
 
+
+
+
+
+
+
+
+
+## 5. Praktikum 3: Menggunakan Completer di Future
+Menggunakan Future dengan then, catchError, async, dan await mungkin sudah cukup untuk banyak kasus, tetapi ada alternatif melakukan operasi async di Dart dan Flutter yaitu dengan class Completer.
+
+Completer membuat object Future yang mana Anda dapat menyelesaikannya nanti (late) dengan return sebuah value atau error.  
+
+
+## Langkah 1: Buka main.dart
+Pastikan telah impor package async berikut.  
+### 💻 Source Code  
+```dart
+import 'package:async/async.dart';
+```
+
+---   
+
+## Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState seperti ini. 
+### 💻 Source Code  
+```dart
+late Completer completer;
+
+Future getNumber() {
+  completer = Completer<int>();
+  calculate();
+  return completer.future;
+}
+
+Future calculate() async {
+  await Future.delayed(const Duration(seconds : 5));
+  completer.complete(42);
+}```
+
+---   
+
