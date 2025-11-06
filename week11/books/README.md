@@ -437,4 +437,48 @@ final futures = Future.wait<int>([
 ## Soal 8
 ## Jelaskan maksud perbedaan kode langkah 1 dan 4! 
 perbedaan utama adalah pada cara mengelola kumpulan Future.
-Langkah 1 menggunakan FutureGroup dari package tambahan, sedangkan Langkah 4 memakai Future.wait yang lebih sederhana dan native di Dart.
+Langkah 1 menggunakan FutureGroup dari package tambahan, sedangkan Langkah 4 memakai Future.wait yang lebih sederhana dan native di Dart. 
+
+
+## 7. Praktikum 5: Menangani Respon Error pada Async Code
+Ada beberapa teknik untuk melakukan handle error pada code async. Pada praktikum ini Anda akan menggunakan 2 cara, yaitu then() callback dan pola async/await.
+
+Setelah Anda menyelesaikan praktikum 4, Anda dapat melanjutkan praktikum 5 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+## Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState 
+### 💻 Source Code  
+```dart
+Future returnError() async {
+  await Future.delayed(const Duration(seconds: 2));
+  throw Exception('Something terrible happened!');
+}
+```
+
+---      
+
+## Langkah 2: ElevatedButton
+Ganti dengan kode berikut
+### 💻 Source Code  
+```dart
+returnError()
+  .then((value) {
+    setState(() {
+      result = 'Success';
+    });
+  }).catchError((onError) {
+    setState(() {
+      result = onError.toString();
+    });
+  }).whenComplete(() => print('Complete'));
+```
+
+---      
+
+
+## Langkah 3: Run
+Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut. 
+## Soal 9
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9". 
+![Praktikum ](img/P11P5L3.JPG)
+
