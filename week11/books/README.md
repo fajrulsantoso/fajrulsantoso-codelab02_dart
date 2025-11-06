@@ -163,4 +163,4 @@ Kode substring(0, 450) berfungsi menampilkan hanya 450 karakter pertama dari dat
 Sedangkan catchError digunakan untuk menangani kesalahan saat mengambil data dari API, sehingga jika terjadi error, aplikasi tidak crash dan menampilkan pesan “An error occurred”.
 ## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
 ## Jawaban
-![Praktikum ](img/JW2_2.JPG)  
+![Praktikum ](img/JW3.JPG)  
