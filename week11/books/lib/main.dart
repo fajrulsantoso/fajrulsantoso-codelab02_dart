@@ -32,10 +32,10 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
-  // ✅ Langkah 4: Tambah method getData()
+  // ✅ Langkah 4: Method getData() untuk ambil data dari API Google Books
   Future<http.Response> getData() async {
     const authority = 'www.googleapis.com';
-    const path = '/books/v1/volumes/1bm0DwAAQBAJ';
+    const path = '/books/v1/volumes/1bm0DwAAQBAJ'; // ID buku Atomic Habits kamu
     Uri url = Uri.https(authority, path);
     return http.get(url);
   }
@@ -48,10 +48,21 @@ class _FuturePageState extends State<FuturePage> {
         child: Column(
           children: [
             const Spacer(),
+            // ✅ Langkah 5: Tambahkan kode di onPressed
             ElevatedButton(
               child: const Text('GO!'),
-              onPressed:
-                  () {}, // onPressed masih kosong (akan diisi di langkah berikutnya)
+              onPressed: () {
+                setState(() {}); // untuk refresh state awal
+                getData()
+                    .then((value) {
+                      result = value.body.toString().substring(0, 450);
+                      setState(() {}); // update tampilan
+                    })
+                    .catchError((_) {
+                      result = 'An error occurred';
+                      setState(() {});
+                    });
+              },
             ),
             const Spacer(),
             Text(result),
