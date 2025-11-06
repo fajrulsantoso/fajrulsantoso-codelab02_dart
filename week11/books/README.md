@@ -200,4 +200,113 @@ Future<int> returnThreeAsync() async {
 }
 ```
 
---- 
+---   
+
+## Langkah 2: Tambah method count()
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya. 
+
+### 💻 Source Code  
+```dart
+Future count() async {
+  int total = 0;
+  total = await returnOneAsync();
+  total += await returnTwoAsync();
+  total += await returnThreeAsync();
+  setState(() {
+    result = total.toString();
+  });
+}
+```
+
+---   
+
+
+## Langkah 3: Panggil count()
+Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut. 
+### 💻 Source Code  
+```dart
+ElevatedButton(
+  child: Text('GO!'),
+  onPressed: () {
+    count();
+  },
+)
+```
+
+---   
+
+
+Langkah 4: Run
+Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+Soal 4
+## 1 Jelaskan maksud kode langkah 1 dan 2 tersebut! 
+## Langkah 1:
+Tiga method returnOneAsync(), returnTwoAsync(), dan returnThreeAsync() digunakan untuk mensimulasikan proses asynchronous (seperti pengambilan data dari server).
+Masing-masing menunggu selama 3 detik menggunakan Future.delayed() lalu mengembalikan nilai 1, 2, dan 3.
+
+## Langkah 2:
+Method count() menjalankan ketiga method tersebut secara berurutan menggunakan await.
+Setiap hasil ditambahkan ke variabel total, lalu hasil akhirnya ditampilkan ke layar melalui setState().
+Tujuannya adalah untuk menunjukkan cara kerja async/await dalam menjalankan beberapa proses asynchronous secara berurutan dan menampilkan hasil akhirnya ke UI.
+## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 4".
+## jawaban 
+![Praktikum ](img/P11P2L4.JPG)
+
+
+
+
+
+
+
+
+
+## 5. Praktikum 3: Menggunakan Completer di Future
+Menggunakan Future dengan then, catchError, async, dan await mungkin sudah cukup untuk banyak kasus, tetapi ada alternatif melakukan operasi async di Dart dan Flutter yaitu dengan class Completer.
+
+Completer membuat object Future yang mana Anda dapat menyelesaikannya nanti (late) dengan return sebuah value atau error.  
+
+
+## Langkah 1: Buka main.dart
+Pastikan telah impor package async berikut.  
+### 💻 Source Code  
+```dart
+import 'package:async/async.dart';
+```
+
+---   
+
+## Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState seperti ini. 
+### 💻 Source Code  
+```dart
+late Completer completer;
+
+Future getNumber() {
+  completer = Completer<int>();
+  calculate();
+  return completer.future;
+}
+
+Future calculate() async {
+  await Future.delayed(const Duration(seconds : 5));
+  completer.complete(42);
+}
+```
+
+---   
+
+
+## Langkah 3: Ganti isi kode onPressed()
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+### 💻 Source Code  
+```dart
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+});
+```
+
+---   
+
