@@ -32,12 +32,39 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
-  // ✅ Langkah 4: Method getData() untuk ambil data dari API Google Books
+  // ✅ Method getData() (sudah tidak digunakan di langkah ini)
   Future<http.Response> getData() async {
     const authority = 'www.googleapis.com';
-    const path = '/books/v1/volumes/1bm0DwAAQBAJ'; // ID buku Atomic Habits kamu
+    const path = '/books/v1/volumes/1bm0DwAAQBAJ';
     Uri url = Uri.https(authority, path);
     return http.get(url);
+  }
+
+  // ✅ Langkah 1: Tiga method Future sederhana
+  Future<int> returnOneAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 1;
+  }
+
+  Future<int> returnTwoAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 2;
+  }
+
+  Future<int> returnThreeAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 3;
+  }
+
+  // ✅ Langkah 2: Method count() menggunakan async/await
+  Future count() async {
+    int total = 0;
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    setState(() {
+      result = total.toString(); // Menampilkan hasil penjumlahan
+    });
   }
 
   @override
@@ -48,20 +75,11 @@ class _FuturePageState extends State<FuturePage> {
         child: Column(
           children: [
             const Spacer(),
-            // ✅ Langkah 5: Tambahkan kode di onPressed
+            // ✅ Langkah 3: Panggil count() saat tombol ditekan
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                setState(() {}); // untuk refresh state awal
-                getData()
-                    .then((value) {
-                      result = value.body.toString().substring(0, 450);
-                      setState(() {}); // update tampilan
-                    })
-                    .catchError((_) {
-                      result = 'An error occurred';
-                      setState(() {});
-                    });
+                count();
               },
             ),
             const Spacer(),
