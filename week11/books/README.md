@@ -1,16 +1,6 @@
-# books
+# 3. Praktikum 1: Mengunduh Data dari Web Service (API) 
+Langkah 1: Buat Project Baru
+Buatlah sebuah project flutter baru dengan nama books di folder src week-11 repository GitHub Anda.
 
-A new Flutter project.
+Kemudian Tambahkan dependensi http dengan mengetik perintah berikut di terminal.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
