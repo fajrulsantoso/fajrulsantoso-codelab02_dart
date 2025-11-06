@@ -309,4 +309,15 @@ getNumber().then((value) {
 ```
 
 ---   
+## Soal 5
+## 1 Jelaskan maksud kode langkah 2 tersebut! 
+## JAWABAN
+Penjelasan Langkah 2
+
+Kode pada langkah 2 menggunakan Completer untuk membuat Future secara manual.
+getNumber() membuat Future baru dan memanggil calculate(), sedangkan calculate() menunggu 5 detik dengan Future.delayed() lalu menjalankan completer.complete(42) untuk menyelesaikan Future dengan hasil 42.
+Artinya, proses asynchronous selesai setelah 5 detik dan menghasilkan nilai 42.
+## 2Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
+## JAWABAN 
+![Praktikum ](img/P11P3L4.JPG)
 
