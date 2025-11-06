@@ -435,6 +435,6 @@ final futures = Future.wait<int>([
 
 
 ## Soal 8
-Jelaskan maksud perbedaan kode langkah 1 dan 4! 
+## Jelaskan maksud perbedaan kode langkah 1 dan 4! 
 perbedaan utama adalah pada cara mengelola kumpulan Future.
 Langkah 1 menggunakan FutureGroup dari package tambahan, sedangkan Langkah 4 memakai Future.wait yang lebih sederhana dan native di Dart.
