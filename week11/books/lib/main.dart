@@ -34,19 +34,26 @@ class _FuturePageState extends State<FuturePage> {
   String result = '';
 
   // ✅ Langkah 2: Tambahkan variabel late Completer
-  late Completer completer;
+  late Completer<int> completer;
 
   // ✅ Method getNumber() yang mengembalikan Future
-  Future getNumber() {
-    completer = Completer<int>(); // Membuat objek Completer
-    calculate(); // Jalankan proses perhitungan
-    return completer.future; // Kembalikan future untuk ditunggu hasilnya
+  Future<int> getNumber() {
+    completer = Completer<int>();
+    calculate(); // Jalankan method calculate()
+    return completer.future;
   }
 
-  // ✅ Method calculate() yang akan menyelesaikan Future setelah delay 5 detik
-  Future calculate() async {
-    await Future.delayed(const Duration(seconds: 5));
-    completer.complete(42); // Menyelesaikan Future dengan nilai 42
+  // ✅ Langkah 5: Method calculate() dengan penanganan error
+  Future<void> calculate() async {
+    try {
+      await Future.delayed(const Duration(seconds: 3)); // simulasi proses
+      // Aktifkan baris berikut untuk mengetes error:
+      throw Exception('Simulasi error');
+      // Jika tidak error, kamu bisa ganti dengan:
+      // completer.complete(42);
+    } catch (e) {
+      completer.completeError(e); // Jika error, kirim error ke Future
+    }
   }
 
   @override
@@ -60,15 +67,25 @@ class _FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                getNumber().then((value) {
-                  setState(() {
-                    result = value.toString(); // tampilkan hasil 42
-                  });
-                });
+                getNumber()
+                    .then((value) {
+                      setState(() {
+                        result = value
+                            .toString(); // tampilkan hasil jika sukses
+                      });
+                    })
+                    .catchError((error) {
+                      setState(() {
+                        result = 'An error occurred'; // tampilkan jika gagal
+                      });
+                    });
               },
             ),
             const Spacer(),
-            Text(result),
+            Text(
+              result,
+              style: const TextStyle(fontSize: 24, color: Colors.red),
+            ),
             const Spacer(),
             const CircularProgressIndicator(),
             const Spacer(),
