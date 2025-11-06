@@ -157,6 +157,10 @@ ElevatedButton(
 --- 
 
 ## Soal 3
-Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
-Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
+## 1 Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
+## jawaban  
+Kode substring(0, 450) berfungsi menampilkan hanya 450 karakter pertama dari data JSON agar tampilan tidak terlalu panjang.
+Sedangkan catchError digunakan untuk menangani kesalahan saat mengambil data dari API, sehingga jika terjadi error, aplikasi tidak crash dan menampilkan pesan “An error occurred”.
+## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
 ## Jawaban
+![Praktikum ](img/JW2_2.JPG)  
