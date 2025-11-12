@@ -762,3 +762,68 @@ Setelah ditambahkan handling error, UI kini menampilkan pesan kesalahan seperti 
 ## Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
 ## Jawaban
 ![Praktikum ](img/P11P7L5.JPG)
+
+
+## 10. Praktikum 8: Navigation route dengan Future Function
+Praktikum kali ini Anda akan melihat manfaat Future untuk Navigator dalam transformasi Route menjadi sebuah function async. Anda akan melakukan push screen baru dan fungsi await menunggu data untuk melakukan update warna background pada screen.
+
+Setelah Anda menyelesaikan praktikum 7, Anda dapat melanjutkan praktikum 8 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+
+## Langkah 1: Buat file baru navigation_first.dart
+Buatlah file baru ini di project lib Anda.
+
+## Langkah 2: Isi kode navigation_first.dart
+
+
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  // Warna tema favorit: biru
+  Color color = Colors.blue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
+        title: const Text('Fajrul Santoso'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue.shade600,
+            foregroundColor: Colors.white,
+          ),
+          child: const Text('Change Color'),
+          onPressed: () {
+            _navigateAndGetColor(context);
+          },
+        ),
+      ),
+    );
+  }
+
+  // Dummy function agar tidak error
+  void _navigateAndGetColor(BuildContext context) {}
+}
+
+
+```
+
+---      
+
+
+## Soal 15
+## 1 Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+## 2 Silakan ganti dengan warna tema favorit Anda.
