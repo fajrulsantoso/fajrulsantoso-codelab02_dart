@@ -1,7 +1,6 @@
-import 'dart:async';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:async/async.dart'; // tetap diimpor, meski tidak digunakan langsung
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,120 +12,107 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fajrul Santoso',
+      title: 'Simulated Location - Fajrul Santoso',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const FuturePage(),
+      home: const LocationScreen(),
     );
   }
 }
 
-class FuturePage extends StatefulWidget {
-  const FuturePage({super.key});
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
 
   @override
-  State<FuturePage> createState() => _FuturePageState();
+  State<LocationScreen> createState() => _LocationScreenState();
 }
 
-class _FuturePageState extends State<FuturePage> {
-  String result = '';
+class _LocationScreenState extends State<LocationScreen> {
+  Future<Position>? position;
 
-  // ✅ Future.wait untuk menjalankan beberapa Future sekaligus
-  void returnFG() async {
-    try {
-      final futures = Future.wait<int>([
-        returnOneAsync(),
-        returnTwoAsync(),
-        returnThreeAsync(),
-      ]);
-
-      final values = await futures;
-      int total = values.reduce((a, b) => a + b);
-
-      setState(() {
-        result = total.toString(); // Hasil: 6
-      });
-    } catch (e) {
-      setState(() {
-        result = 'Terjadi kesalahan: $e';
-      });
-    }
+  @override
+  void initState() {
+    super.initState();
+    position = getMockPosition();
   }
 
-  // ✅ Fungsi asynchronous normal
-  Future<int> returnOneAsync() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return 1;
+  Future<Position> getMockPosition() async {
+    await Future.delayed(const Duration(seconds: 2)); // simulasi loading
+    // Mock: Surabaya
+    return Position(
+      latitude: -7.24917,
+      longitude: 112.75083,
+      timestamp: DateTime.now(),
+      accuracy: 5.0,
+      altitude: 3.0,
+      heading: 0.0,
+      speed: 0.0,
+      speedAccuracy: 0.0,
+      altitudeAccuracy: 1.0, // ✅ parameter baru
+      headingAccuracy: 1.0, // ✅ parameter baru
+    );
   }
 
-  Future<int> returnTwoAsync() async {
-    await Future.delayed(const Duration(seconds: 2));
-    return 2;
-  }
-
-  Future<int> returnThreeAsync() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return 3;
-  }
-
-  // ✅ Fungsi untuk uji error
-  Future returnError() async {
-    await Future.delayed(const Duration(seconds: 2));
-    throw Exception('Something terrible happened!');
+  void refresh() {
+    setState(() {
+      position = getMockPosition();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Back from the Future')),
+      appBar: AppBar(
+        title: const Text('Current Location (Mock) - Fajrul Santoso'),
+        actions: [
+          IconButton(onPressed: refresh, icon: const Icon(Icons.refresh)),
+        ],
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(),
-
-            // 🔹 Tombol pertama: Future.wait (hasil angka 6)
-            ElevatedButton(
-              child: const Text('Run Future.wait'),
-              onPressed: returnFG,
-            ),
-
-            const SizedBox(height: 20),
-
-            // 🔹 Tombol kedua: Uji error Future
-            ElevatedButton(
-              child: const Text('Run Error Test'),
-              onPressed: () {
-                returnError()
-                    .then((value) {
-                      setState(() {
-                        result = 'Success';
-                      });
-                    })
-                    .catchError((error) {
-                      setState(() {
-                        // ✅ tampilkan pesan error di layar
-                        result = error.toString();
-                      });
-                    })
-                    .whenComplete(() {
-                      print('Complete');
-                    });
-              },
-            ),
-
-            const Spacer(),
-            Text(
-              result,
-              style: const TextStyle(fontSize: 24, color: Colors.red),
-              textAlign: TextAlign.center,
-            ),
-            const Spacer(),
-            const CircularProgressIndicator(),
-            const Spacer(),
-          ],
+        child: FutureBuilder<Position>(
+          future: position,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 12),
+                  Text('Mendapatkan lokasi...'),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return Text(
+                'Error: ${snapshot.error}',
+                style: const TextStyle(color: Colors.red),
+              );
+            } else if (snapshot.hasData) {
+              final pos = snapshot.data!;
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Latitude: ${pos.latitude}',
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Longitude: ${pos.longitude}',
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Timestamp: ${pos.timestamp}',
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ],
+              );
+            } else {
+              return const Text('Tidak ada data lokasi');
+            }
+          },
         ),
       ),
     );
