@@ -650,4 +650,115 @@ Untuk lebih memahami widget FutureBuilder, mari kita coba dengan praktikum ini.
 Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
 
 ## Langkah 1: Modifikasi method getPosition()
+Buka file geolocation.dart kemudian ganti isi method dengan kode ini. 
+
+## Langkah 1: Modifikasi method getPosition()
 Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
+
+### 💻 Source Code  
+```dart
+Future<Position> getPosition() async {
+  await Geolocator.isLocationServiceEnabled();
+  await Future.delayed(const Duration(seconds: 3));
+  Position position = await Geolocator.getCurrentPosition();
+  return position;
+}
+```
+
+---      
+
+## Langkah 2: Tambah variabel
+Tambah variabel ini di class _LocationScreenState 
+
+
+### 💻 Source Code  
+```dart
+Future<Position>? position;
+```
+
+---      
+
+
+## Langkah 3: Tambah initState()
+Tambah method ini dan set variabel position 
+
+### 💻 Source Code  
+```dart
+@override
+void initState() {
+  super.initState();
+  position = getPosition();
+}
+```
+
+---      
+
+## Langkah 4: Edit method build()
+Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
+
+### 💻 Source Code  
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(title: Text('Current Location')),
+    body: Center(child: FutureBuilder(
+      future: position,
+      builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+        if (snapshot.connectionState ==
+            ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        else if (snapshot.connectionState ==
+            ConnectionState.done) {
+          return Text(snapshot.data.toString());
+        }
+        else {
+          return const Text('');
+        }
+      },
+    )),
+  );
+}
+```
+
+--- 
+
+
+## Soal 13
+## 1 Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian? 
+## Jawaban 
+Ya, terdapat perbedaan pada tampilan UI.
+Sebelumnya, UI diperbarui secara manual menggunakan setState() setelah data lokasi diperoleh.
+Sekarang, dengan FutureBuilder, pembaruan UI dilakukan secara otomatis dan reaktif sesuai status Future (loading, selesai, atau error).
+Hasilnya, kode menjadi lebih efisien, clean, dan reactive, karena logika async dan UI terhubung langsung tanpa perlu pemanggilan setState() secara eksplisit
+## 2 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13". 
+## Jawaban
+![Praktikum ](img/P11P7L4.JPG)
+## 3 Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI. 
+
+## Langkah 5: Tambah handling error
+Tambahkan kode berikut untuk menangani ketika terjadi error. Kemudian hot restart. 
+
+
+### 💻 Source Code  
+```dart
+else if (snapshot.connectionState == ConnectionState.done) {
+  if (snapshot.hasError) {
+     return Text('Something terrible happened!');
+  }
+  return Text(snapshot.data.toString());
+}
+```
+
+---      
+
+## Soal 14
+## Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+## Jawaban 
+Ya, ada perbedaan pada UI.
+Sebelumnya, saat terjadi error, aplikasi tidak menampilkan pesan apa pun atau hanya menampilkan teks kosong.
+Setelah ditambahkan handling error, UI kini menampilkan pesan kesalahan seperti “Something terrible happened!” secara langsung di layar.
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
+## Jawaban
+![Praktikum ](img/P11P7L5.JPG)
