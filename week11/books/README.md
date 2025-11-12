@@ -827,3 +827,115 @@ class _NavigationFirstState extends State<NavigationFirst> {
 ## Soal 15
 ## 1 Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
 ## 2 Silakan ganti dengan warna tema favorit Anda.
+
+
+## Langkah 3: Tambah method di class _NavigationFirstState
+Tambahkan method ini. 
+
+
+### 💻 Source Code  
+```dart
+Future _navigateAndGetColor(BuildContext context) async {
+  color = await Navigator.push(context,
+    MaterialPageRoute(builder: (context) => const NavigationSecond()),) ?? Colors.bl
+  setState(() {});
+}
+```
+
+---  
+
+## Langkah 4: Buat file baru navigation_second.dart
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan. 
+
+## Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+
+
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationSecond extends StatefulWidget {
+  const NavigationSecond({super.key});
+
+  @override
+  State<NavigationSecond> createState() => _NavigationSecondState();
+}
+
+class _NavigationSecondState extends State<NavigationSecond> {
+  Color color;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Navigation Second Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              child: const Text('Red'),
+              onPressed: () {
+                color = Colors.red.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Green'),
+              onPressed: () {
+                color = Colors.green.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                color = Colors.blue.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+---  
+
+
+## Langkah 6: Edit main.dart
+Lakukan edit properti home.
+
+### 💻 Source Code  
+```dart
+home: const NavigationFirst(),
+```
+
+---  
+
+## Langkah 8: Run
+Lakukan run, jika terjadi error silakan diperbaiki.
+
+## Soal 16
+## 1 Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ? 
+Saat setiap tombol (Red, Green, atau Blue) diklik pada halaman kedua (NavigationSecond),
+halaman akan menutup (pop) dan mengembalikan nilai warna ke halaman pertama (NavigationFirst).
+
+Kemudian, halaman pertama menerima warna tersebut melalui:
+
+### 💻 Source Code  
+```dart
+final selectedColor = await Navigator.push(...);
+```
+
+---   
+
+
+## 2 Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+## 3 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
+## Jawaban
+![Praktikum ](img/P11P8L8.JPG) 
+## Jawaban
+![Praktikum ](img/P11P8L88.JPG)
