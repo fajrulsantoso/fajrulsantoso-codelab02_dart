@@ -638,5 +638,15 @@ await Future.delayed(const Duration(seconds: 3));
 Tidak muncul koordinat GPS saat dijalankan di browser, karena plugin geolocator hanya berfungsi di Android/iOS, bukan di Web.
 ## 2 Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian? 
 Tidak, koordinat GPS tidak muncul saat dijalankan di browser, karena plugin geolocator hanya mendukung Android dan iOS. Browser tidak dapat mengakses sensor GPS perangkat secara langsung.
-## 3 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12". 
+## 3 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".  
+
+
+## 8. Praktikum 6: Menggunakan Future dengan StatefulWidget
+Seperti yang Anda telah pelajari, Stateless widget tidak dapat menyimpan informasi (state), StatefulWidget dapat mengelola variabel dan properti dengan method setState(), yang kemudian dapat ditampilkan pada UI. State adalah informasi yang dapat berubah selama life cycle widget itu berlangsung.
+
+Ada 4 method utama dalam life cycle StatefullWidget:
+
+initState(): dipanggil sekali ketika state dibangun. Bisa dikatakan ini juga sebagai konstruktor class.
+build(): dipanggil setiap kali ada perubahan state atau UI. Method ini melakukan destroy UI dan membangun ulang dari nol.
+deactive() dan dispose(): digunakan untuk menghapus widget dari tree, pada beberapa kasus dimanfaatkan untuk menutup koneksi ke database atau menyimpan data sebelum berpindah screen.
 
