@@ -649,5 +649,5 @@ Untuk lebih memahami widget FutureBuilder, mari kita coba dengan praktikum ini.
 
 Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
 
-Langkah 1: Modifikasi method getPosition()
+## Langkah 1: Modifikasi method getPosition()
 Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
