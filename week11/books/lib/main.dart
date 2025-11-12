@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'navigation_first.dart';
+import 'navigation_dialog.dart'; // ✅ ubah impor ke file yang baru
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const NavigationFirst(),
+      home: const NavigationDialogScreen(), // ✅ ubah ke NavigationDialogScreen
     );
   }
 }
