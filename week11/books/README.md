@@ -938,4 +938,128 @@ final selectedColor = await Navigator.push(...);
 ## Jawaban
 ![Praktikum ](img/P11P8L8.JPG) 
 ## Jawaban
-![Praktikum ](img/P11P8L88.JPG)
+![Praktikum ](img/P11P8L88.JPG) 
+
+## 11. Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+Pada praktikum ini, Anda akan memanfaatkan widget AlertDialog. Anda bisa manfaatkan widget ini misal untuk memilih operasi Save, Delete, Accept, dan sebagainya.
+
+Setelah Anda menyelesaikan praktikum 8, Anda dapat melanjutkan praktikum 9 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini 
+
+## Langkah 1: Buat file baru navigation_dialog.dart
+Buat file dart baru di folder lib project Anda.
+
+## Langkah 2: Isi kode navigation_dialog.dart 
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationDialogScreen extends StatefulWidget {
+  const NavigationDialogScreen({super.key});
+
+  @override
+  State<NavigationDialogScreen> createState() => _NavigationDialogScreenState();
+}
+
+class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation Dialog Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(child: const Text('Change Color'),
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+}
+```
+
+---   
+
+## Langkah 3: Tambah method async 
+
+### 💻 Source Code  
+```dart
+_showColorDialog(BuildContext context) async {
+  await showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (_) {
+      return AlertDialog(
+        title: const Text('Very important question'),
+        content: const Text('Please choose a color'),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Red'),
+            onPressed: () {
+              color = Colors.red.shade700;
+              Navigator.pop(context, color);
+            },
+          ),
+          TextButton(
+            child: const Text('Green'),
+            onPressed: () {
+              color = Colors.green.shade700;
+              Navigator.pop(context, color);
+            },
+          ),
+          TextButton(
+            child: const Text('Blue'),
+            onPressed: () {
+              color = Colors.blue.shade700;
+              Navigator.pop(context, color);
+            },
+          ),
+        ],
+      );
+    },
+  );
+  setState(() {});
+}
+```
+
+---   
+
+## Langkah 4: Panggil method di ElevatedButton
+### 💻 Source Code  
+```dart
+onPressed: () {
+  _showColorDialog(context);
+},
+```
+
+---  
+
+Langkah 5: Edit main.dart
+Ubah properti home
+```dart
+home: const NavigationDialog(),
+```
+
+---  
+
+
+## Soal 17
+## 1 Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+## Jawaban 
+Ketika tombol Change Color diklik, muncul AlertDialog yang berisi tiga tombol warna.
+Setiap tombol warna memiliki fungsi onPressed yang mengubah nilai variabel color sesuai pilihan, lalu menutup dialog dengan Navigator.pop(context, color).
+
+Setelah dialog tertutup, method _showColorDialog menjalankan setState(), sehingga tampilan background Scaffold diperbarui dengan warna yang baru dipilih.
+## 2 Gantilah 3 warna pada langkah 3 dengan warna favorit Anda! 
+## Jawaban
+![Praktikum ](img/P11P9L6.JPG) 
+## Jawaban
+![Praktikum ](img/P11P9L66.JPG) 
+
+## Jawaban
+![Praktikum ](img/P11P9L666.JPG)
+
+## Jawaban
+![Praktikum ](img/P11P9L666.JPG) 
+## 3 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
