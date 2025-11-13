@@ -228,3 +228,11 @@ Soal 4
 ## JAWABAN  
 
 ![Praktikum ](img/P12P1L12.JPG) 
+![Praktikum ](img/P12P1L122.JPG) 
+![Praktikum ](img/P12P1L1222.JPG)
+![Praktikum ](img/P12P1L12222.JPG) 
+![Praktikum ](img/P12P1L122222.JPG) 
+
+
+
+
