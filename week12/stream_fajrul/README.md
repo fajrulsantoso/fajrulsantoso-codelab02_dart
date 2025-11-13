@@ -147,3 +147,84 @@ return colors[index]; mengembalikan warna berikutnya dari daftar colors.
 yield* digunakan untuk mengalirkan semua warna tersebut ke stream utama (getColorStream()).
 ➡️ Hasilnya: setiap 1 detik, stream ini akan mengeluarkan satu warna dari daftar, berputar terus menerus.
 ## Lakukan commit hasil jawaban Soal 3 dengan pesan "W12: Jawaban Soal 3" 
+
+
+## Langkah 7: Buka main.dart
+Ketik kode impor file ini pada file main.dart 
+### 💻 Source Code  
+```dart
+import 'stream.dart';
+
+```
+
+## Langkah 8: Tambah variabel
+Ketik dua properti ini di dalam class _StreamHomePageState  
+
+### 💻 Source Code  
+```dart
+Color bgColor = Colors.blueGrey;
+late ColorStream colorStream;
+```
+
+--- 
+
+
+## Langkah 9: Tambah method changeColor()
+Tetap di file main, Ketik kode seperti berikut 
+
+### 💻 Source Code  
+```dart
+void changeColor() async {
+  await for (var eventColor in colorStream.getColors()) {
+    setState(() {
+      bgColor = eventColor;
+    });
+  }
+}
+```
+
+--- 
+
+
+## Langkah 10: Lakukan override initState()
+Ketika kode seperti berikut  
+
+
+### 💻 Source Code  
+```dart
+@override
+void initState() {
+  super.initState();
+  colorStream = ColorStream();
+  changeColor();
+}
+```
+
+---    
+
+
+## Langkah 11: Ubah isi Scaffold()
+Sesuaikan kode seperti berikut. 
+
+
+### 💻 Source Code  
+```dart
+return Scaffold(
+  appBar: AppBar(
+    title: const Text('Stream'),
+  ),
+  body: Container(
+    decoration: BoxDecoration(color: bgColor),
+  ),
+);
+```
+
+---     
+
+
+Soal 4
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+## Lakukan commit hasil jawaban Soal 4 dengan pesan "W12: Jawaban Soal 4" 
+## JAWABAN  
+
+![Praktikum ](img/P12P1L12.JPG) 
