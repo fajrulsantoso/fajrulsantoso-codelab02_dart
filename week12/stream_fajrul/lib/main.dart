@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'stream.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,8 +26,46 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  // Langkah 8: Tambah variabel
+  Color bgColor = Colors.blueGrey;
+  late ColorStream colorStream;
+
+  // Langkah 9: Tambah method changeColor()
+  void changeColor() async {
+    await for (var eventColor in colorStream.getColorStream()) {
+      if (!mounted) return; // pastikan widget masih aktif
+      setState(() {
+        bgColor = eventColor;
+      });
+    }
+  }
+
+  // Langkah 10: Override initState()
+  @override
+  void initState() {
+    super.initState();
+    colorStream = ColorStream();
+    changeColor();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Stream')),
+      body: AnimatedContainer(
+        duration: const Duration(seconds: 1), // animasi perubahan warna
+        color: bgColor,
+        child: const Center(
+          child: Text(
+            'Selamat Datang!',
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
