@@ -234,5 +234,42 @@ Soal 4
 ![Praktikum ](img/P12P1L122222.JPG) 
 
 
+## Langkah 13: Ganti isi method changeColor()
+Anda boleh comment atau hapus kode sebelumnya, lalu ketika kode seperti berikut. 
 
+### 💻 Source Code  
+```dart
+colorStream.getColors().listen((eventColor) {
+  setState(() {
+    bgColor = eventColor;
+  });
+}); 
+```
+
+---     
+
+## Soal 5
+## Jelaskan perbedaan menggunakan listen dan await for (langkah 9) ! 
+Perbedaan await for dan listen pada Stream
+
+await for
+
+Menunggu tiap event satu per satu sebelum lanjut ke event berikutnya.
+
+Digunakan di fungsi async.
+
+Cocok untuk logika berurutan.
+
+listen
+
+Menjalankan callback langsung setiap event muncul, lebih reaktif.
+
+Bisa pause, resume, atau cancel.
+
+Cocok untuk UI atau event-driven programming.
+
+Intinya:
+await for = tunggu dulu → baru lanjut.
+listen = jalankan segera tiap event, tanpa menunggu.
+## Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
 
