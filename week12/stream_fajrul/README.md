@@ -273,3 +273,152 @@ await for = tunggu dulu → baru lanjut.
 listen = jalankan segera tiap event, tanpa menunggu.
 ## Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
 
+
+## 4. Praktikum 2: Stream controllers dan sinks
+StreamControllers akan membuat jembatan antara Stream dan Sink. Stream berisi data secara sekuensial yang dapat diterima oleh subscriber manapun, sedangkan Sink digunakan untuk mengisi (injeksi) data.
+
+Secara sederhana, StreamControllers merupakan stream management. Ia akan otomatis membuat stream dan sink serta beberapa method untuk melakukan kontrol terhadap event dan fitur-fitur yang ada di dalamnya.
+
+Anda dapat membayangkan stream sebagai pipa air yang mengalir searah, dari salah satu ujung Anda dapat mengisi data dan dari ujung lain data itu keluar. Anda dapat melihat konsep stream pada gambar diagram berikut ini. 
+
+## Langkah 1: Buka file stream.dart
+Lakukan impor dengan mengetik kode ini.
+### 💻 Source Code  
+```dart
+import 'dart:async';
+
+```
+
+---     
+
+##  Langkah 2: Tambah class NumberStream 🔢
+Tetap di file stream.dart, tambah class baru seperti berikut
+
+### 💻 Source Code  
+```dart
+class NumberStream {
+}
+```
+
+---     
+
+## Langkah 3: Tambah StreamController ⚙️
+Di dalam class NumberStream, buatlah variabel seperti berikut.
+### 💻 Source Code  
+```dart
+final StreamController<int> controller = StreamController<int>();
+```
+
+---     
+
+## Langkah 4: Tambah method addNumberToSink
+Tetap di class NumberStream buatlah method ini
+### 💻 Source Code  
+```dart
+void addNumberToSink(int newNumber) {
+  controller.sink.add(newNumber);
+} 
+```
+
+---     
+
+
+## Langkah 5: Tambah method close() 
+### 💻 Source Code  
+```dart
+void close() {
+  controller.close();
+}
+```
+
+---   
+
+## Langkah 6: Buka main.dart
+Ketik kode import seperti berikut
+### 💻 Source Code  
+```dart
+import 'dart:async';
+import 'dart:math';
+```
+
+---   
+
+## Langkah 7: Tambah variabel
+Di dalam class _StreamHomePageState ketik variabel berikut
+### 💻 Source Code  
+```dart
+int lastNumber = 0;
+late StreamController numberStreamController;
+late NumberStream numberStream;
+```
+
+---   
+
+## Langkah 8: Edit initState() 
+### 💻 Source Code  
+```dart
+@override
+void initState() {
+  numberStream = NumberStream();
+  numberStreamController = numberStream.controller;
+  Stream stream = numberStreamController.stream;
+  stream.listen((event) {
+    setState(() {
+      lastNumber = event;
+    });
+  });
+  super.initState();
+}
+```
+
+---   
+
+## Langkah 9: Edit dispose()
+### 💻 Source Code  
+```dart
+@override
+void dispose() {
+  numberStreamController.close();
+  super.dispose();
+}
+```
+
+---   
+
+## Langkah 10: Tambah method addRandomNumber()
+### 💻 Source Code  
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  int myNum = random.nextInt(10);
+  numberStream.addNumberToSink(myNum);
+}
+```
+
+---   
+
+## Langkah 11: Edit method build()
+### 💻 Source Code  
+```dart
+body: SizedBox(
+  width: double.infinity,
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Text(lastNumber.toString()),
+      ElevatedButton(
+        onPressed: () => addRandomNumber(),
+        child: Text('New Random Number'),
+      ),
+    ],
+  ),
+),
+```
+
+---   
+
+
+
+
+
