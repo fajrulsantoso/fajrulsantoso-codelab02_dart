@@ -64,4 +64,86 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
 ---
 ## 2 Gantilah warna tema aplikasi sesuai kesukaan Anda.
-## 3 Lakukan commit hasil jawaban Soal 1 dengan pesan "W12: Jawaban Soal 1"
+## 3 Lakukan commit hasil jawaban Soal 1 dengan pesan "W12: Jawaban Soal 1" 
+
+
+## Langkah 3: Buat file baru stream.dart
+Buat file baru di folder lib project Anda. Lalu isi dengan kode berikut.
+### 💻 Source Code  
+```dart
+import 'package:flutter/material.dart';
+
+class ColorStream {
+
+}
+```
+
+--- 
+
+## Langkah 4: Tambah variabel colors
+Tambahkan variabel di dalam class ColorStream seperti berikut.
+### 💻 Source Code  
+```dart
+ final List<Color> colors = [
+       Colors.blueGrey,
+    Colors.amber,
+    Colors.deepPurple,
+    Colors.lightBlue,
+    Colors.teal,
+    // Tambahan 5 warna favorit
+    Colors.redAccent,
+    Colors.greenAccent,
+    Colors.orange,
+    Colors.pink,
+    Colors.indigo,
+  ];
+```
+
+--- 
+
+Soal 2
+## 1Tambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors tersebut.
+## 2 Lakukan commit hasil jawaban Soal 2 dengan pesan "W12: Jawaban Soal 2"
+
+
+## Langkah 5: Tambah method getColors()
+Di dalam class ColorStream ketik method seperti kode berikut. Perhatikan tanda bintang di akhir keyword async* (ini digunakan untuk melakukan Stream data) 
+### 💻 Source Code  
+```dart
+ Stream<Color> getColorStream() async* {
+}
+```
+
+--- 
+
+
+## Langkah 6: Tambah perintah yield*
+Tambahkan kode berikut ini. 
+### 💻 Source Code  
+```dart
+Stream<Color> getColorStream() async* {
+    yield* Stream.periodic(
+  const Duration(seconds: 1), 
+  (int t) {
+    int index = t % colors.length;
+    return colors[index];
+  }
+);
+}
+
+```
+
+--- 
+
+
+Soal 3
+## Jelaskan fungsi keyword yield* pada kode tersebut! 
+yield* digunakan di dalam fungsi generator asinkron (async*) untuk menghasilkan (mengalirkan) semua nilai dari stream lain secara berurutan.
+Artinya, yield* akan “meneruskan” seluruh data dari stream yang disebutkan setelahnya ke stream utama.
+## Apa maksud isi perintah kode tersebut? 
+Stream.periodic(Duration(seconds: 1), ...) membuat stream yang mengeluarkan data setiap 1 detik.=
+Setiap kali stream memancarkan nilai baru (t), kode menghitung index = t % colors.length → agar urutan warna berulang terus dari awal setelah mencapai akhir daftar.
+return colors[index]; mengembalikan warna berikutnya dari daftar colors.
+yield* digunakan untuk mengalirkan semua warna tersebut ke stream utama (getColorStream()).
+➡️ Hasilnya: setiap 1 detik, stream ini akan mengeluarkan satu warna dari daftar, berputar terus menerus.
+## Lakukan commit hasil jawaban Soal 3 dengan pesan "W12: Jawaban Soal 3" 
