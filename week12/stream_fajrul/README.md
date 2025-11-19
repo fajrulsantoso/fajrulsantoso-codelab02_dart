@@ -433,4 +433,70 @@ Intinya: Langkah 10 = Membersihkan resource dengan menutup stream.
 ![Praktikum ](img/P12P2L11.gif) 
 
 
+## Langkah 13: Buka stream.dart
+Tambahkan method berikut ini.
+
+### 💻 Source Code  
+```dart
+addError() {
+  controller.sink.addError('error');
+}
+```
+
+---    
+
+
+## Langkah 14: Buka main.dart
+Tambahkan method onError di dalam class HomePageState pada method listen di fungsi initState() seperti berikut ini.
+
+### 💻 Source Code  
+```dart
+stream.listen((event) {
+  setState(() {
+    lastNumber = event;
+  });
+}).onError((event) {
+  setState(() {
+    lastNumber = -1;
+  });
+});
+```
+
+---    
+
+## Langkah 15: Edit method addRandomNumber()
+Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini.
+
+
+### 💻 Source Code  
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  //int myNum = random.nextInt(10);
+  //numberStream.addNumberToSink(myNum);
+  numberStream.addError();
+}
+```
+
+---    
+
+
+## Jelaskan maksud kode langkah 13 sampai 15 tersebut! 
+🔹 Langkah 13 – Menambahkan addError()
+Membuat fungsi untuk mengirim error ke stream. Tujuannya agar kita bisa mencoba bagaimana stream memproses error event, bukan hanya data biasa.
+
+🔹 Langkah 14 – Menangani error dengan .onError()
+Menambahkan handler error pada listener.
+Jika stream menerima error, UI akan diubah (misalnya menampilkan nilai -1).
+Ini mengajarkan cara menangkap dan merespons error yang dikirim dari stream.
+
+🔹 Langkah 15 – Mengubah addRandomNumber() untuk mengirim error
+Bagian yang biasanya mengirim angka diganti untuk mengirim error.
+Ini dilakukan agar kita bisa menguji apakah handler error pada langkah 14 bekerja.
+
+
+## Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya. 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
+
 
