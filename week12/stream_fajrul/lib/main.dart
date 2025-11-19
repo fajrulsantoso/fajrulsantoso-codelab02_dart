@@ -28,23 +28,22 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
-  // ==========================
-  // Variabel untuk warna
-  // ==========================
+  // Warna
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
 
-  // ==========================
-  // Variabel untuk angka
-  // ==========================
+  // Angka
   int lastNumber = 0;
   late NumberStream numberStream;
+
+  // ====== LANGKAH 1: Tambahkan variabel transformer ======
+  late StreamTransformer<int, int> transformer;
 
   @override
   void initState() {
     super.initState();
 
-    // Setup ColorStream
+    // Warna berubah otomatis
     colorStream = ColorStream();
     colorStream.getColorStream().listen((eventColor) {
       if (!mounted) return;
@@ -55,18 +54,39 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
     // Setup NumberStream
     numberStream = NumberStream();
-    numberStream.controller.stream.listen((event) {
-      if (!mounted) return;
-      setState(() {
-        lastNumber = event;
-      });
-    });
+
+    // ====== LANGKAH 2: Buat transformer ======
+    transformer = StreamTransformer<int, int>.fromHandlers(
+      handleData: (value, sink) {
+        sink.add(value * 10); // ubah data
+      },
+      handleError: (error, trace, sink) {
+        sink.add(-1); // kirim nilai error
+      },
+      handleDone: (sink) => sink.close(),
+    );
+
+    // ====== LANGKAH 3: Terapkan transformer pada stream ======
+    numberStream.controller.stream
+        .transform(transformer)
+        .listen((event) {
+          if (!mounted) return;
+          setState(() {
+            lastNumber = event;
+          });
+        })
+        .onError((error) {
+          if (!mounted) return;
+          setState(() {
+            lastNumber = -1;
+          });
+        });
   }
 
-  // Method untuk menambahkan angka random
+  // Tombol angka random
   void addRandomNumber() {
     Random random = Random();
-    int myNum = random.nextInt(10); // angka 0–9
+    int myNum = random.nextInt(10);
     numberStream.addNumberToSink(myNum);
   }
 
