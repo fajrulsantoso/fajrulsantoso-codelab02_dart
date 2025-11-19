@@ -581,3 +581,174 @@ Dengan begitu, UI selalu menerima data yang sudah diolah oleh transformer.
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
 
 
+## 6. Praktikum 4: Subscribe ke stream events
+Dari praktikum sebelumnya, Anda telah menggunakan method listen mendapatkan nilai dari stream. Ini akan menghasilkan sebuah Subscription. Subscription berisi method yang dapat digunakan untuk melakukan listen pada suatu event dari stream secara terstruktur.
+
+Pada praktikum 4 ini, kita akan gunakan Subscription untuk menangani event dan error dengan teknik praktik baik (best practice), dan menutup Subscription tersebut.
+
+## Langkah 1: Tambah variabel
+Tambahkan variabel berikut di class _StreamHomePageState:
+### 💻 Source Code  
+```dart
+late StreamSubscription subscription;
+```
+
+---     
+
+
+## Langkah 2: Edit initState()
+Edit kode seperti berikut ini. 
+
+### 💻 Source Code  
+```dart
+@override
+void initState() {
+  NumberStream numberStream = NumberStream();
+  numberStreamController = numberStream.controller;
+  Stream stream = numberStreamController.stream;
+  subscription = stream.listen((event) {
+    setState(() {
+      lastNumber = event;
+    });
+  });
+  super.initState();
+}
+```
+ 
+--- 
+
+
+## Langkah 3: Tetap di initState()
+Tambahkan kode berikut ini.
+### 💻 Source Code  
+```dart
+subscription.onError((error) {
+  setState(() {
+    lastNumber = -1;
+  });
+});
+```
+ 
+---  
+
+## Langkah 4: Tambah properti onDone()
+Tambahkan dibawahnya kode ini setelah onError 
+### 💻 Source Code  
+```dart
+subscription.onDone(() {
+  print('onDone was called');
+});
+```
+ 
+---   
+
+
+
+## Langkah 5: Tambah method baru
+Ketik method ini di dalam class _StreamHomePageState
+### 💻 Source Code  
+```dart
+void stopStream() {
+  numberStreamController.close();
+}
+```
+ 
+---   
+
+
+## Langkah 6: Pindah ke method dispose()
+Jika method dispose() belum ada, Anda dapat mengetiknya dan dibuat override. Ketik kode ini didalamnya. 
+
+### 💻 Source Code  
+```dart
+@override
+void dispose() {
+  subscription.cancel();
+  super.dispose();
+}
+```
+ 
+---   
+
+
+## Langkah 7: Pindah ke method build()
+Tambahkan button kedua dengan isi kode seperti berikut ini. 
+
+
+### 💻 Source Code  
+```dart
+ElevatedButton(
+  onPressed: () => stopStream(),
+  child: const Text('Stop Subscription'),
+)
+```
+ 
+---   
+
+
+
+## Langkah 8: Edit method addRandomNumber()
+Edit kode seperti berikut ini.
+
+### 💻 Source Code  
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  int myNum = random.nextInt(10);
+  if (!numberStreamController.isClosed) {
+    numberStream.addNumberToSink(myNum);
+  } else {
+    setState(() {
+      lastNumber = -1;
+    });
+  }
+}
+```
+ 
+---   
+
+
+Soal 9
+## Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+✅ Langkah 2 — initState() (membuat stream dan mulai mendengarkan)
+
+Pada langkah ini, aplikasi:
+
+Membuat stream controller untuk angka.
+
+Menghubungkan stream tersebut ke listener (subscription).
+
+Tiap kali stream mengirim angka baru, UI akan diperbarui (setState).
+
+Intinya:
+Aplikasi mulai “mendengarkan” aliran data dari stream, dan setiap angka yang masuk langsung ditampilkan ke layar.
+
+✅ Langkah 6 — dispose() (membersihkan listener saat halaman ditutup)
+
+Pada langkah ini:
+
+subscription.cancel() menghentikan listener.
+
+Mencegah memory leak.
+
+Intinya:
+Menghentikan semua proses stream ketika widget dihapus agar aplikasi tetap aman dan tidak boros memori.
+
+✅ Langkah 8 — addRandomNumber() (mengirim angka jika stream masih aktif)
+
+Pada langkah ini:
+
+Mengecek apakah stream masih terbuka.
+
+Jika masih terbuka → kirim angka random.
+
+Jika sudah ditutup → tampilkan -1 sebagai tanda error.
+
+Intinya:
+Hanya menambahkan angka ke stream jika stream belum ditutup. Jika sudah ditutup, tampilkan error (-1).
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+![Praktikum ](img/P12P4L6.gif) 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
+
+
