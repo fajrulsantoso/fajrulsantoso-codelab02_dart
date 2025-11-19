@@ -847,3 +847,6 @@ Stream hanya boleh didengarkan sekali, kecuali Anda mengubahnya menjadi broadcas
 
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
 
+
+
+
