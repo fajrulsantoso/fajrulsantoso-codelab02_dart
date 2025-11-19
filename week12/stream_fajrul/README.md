@@ -419,6 +419,18 @@ body: SizedBox(
 ---   
 
 
+## Jelaskan maksud kode langkah 8 dan 10 tersebut! 
+Pada langkah ini, program menghasilkan angka random kemudian angka tersebut dimasukkan ke sink stream. Setelah dikirim, stream langsung meneruskan data itu ke listener yang akan menampilkan angka terbaru di layar.
+
+Intinya: Langkah 8 = Mengirim data baru ke stream supaya UI otomatis berubah.
+Langkah 10 adalah menutup stream.
+Stream yang sudah tidak digunakan harus ditutup untuk mencegah kebocoran memori dan agar aplikasi tetap ringan. Ini dilakukan saat halaman atau widget ditutup.
+
+Intinya: Langkah 10 = Membersihkan resource dengan menutup stream.
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
+![Praktikum ](img/P12P2L11.JPG) 
 
 
 
