@@ -545,3 +545,39 @@ transformer = StreamTransformer<int, int>.fromHandlers(
 ```
 
 ---     
+
+
+## Jelaskan maksud kode langkah 1-3 tersebut! 
+🔹 Langkah 1 — Menambahkan variabel StreamTransformer
+
+Variabel ini disiapkan untuk memproses data yang melewati stream. Jadi sebelum data diterima UI, data tersebut bisa diubah, difilter, atau ditangani dengan aturan khusus.
+
+🔹 Langkah 2 — Membuat transformer dengan aturan pemrosesan
+
+Di langkah ini ditentukan bagaimana stream harus memproses data:
+
+handleData: setiap angka masuk akan dikali 10 sebelum dikirim ke listener
+
+handleError: jika ada error di stream, nilai pengganti -1 akan dikirim
+
+handleDone: menutup stream ketika selesai
+
+Intinya: membuat “aturan transformasi” untuk data dan error.
+
+🔹 Langkah 3 — Menerapkan transformer ke stream
+
+Stream angka (numberStream) dipasangkan dengan transformer sehingga:
+
+data masuk diproses dulu (dikali 10)
+
+error ditangani (menjadi -1)
+
+hasil akhir baru dikirim ke UI untuk ditampilkan
+
+Dengan begitu, UI selalu menerima data yang sudah diolah oleh transformer.
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README. 
+![Praktikum ](img/P12P3L6.gif) 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
+
+
