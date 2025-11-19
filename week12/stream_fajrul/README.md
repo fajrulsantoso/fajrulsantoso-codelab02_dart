@@ -752,3 +752,58 @@ Hanya menambahkan angka ke stream jika stream belum ditutup. Jika sudah ditutup,
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
 
 
+## 7. Praktikum 5: Multiple stream subscriptions
+Secara default, stream hanya bisa digunakan untuk satu subscription. Jika Anda mencoba untuk melakukan subscription yang sama lebih dari satu, maka akan terjadi error. Untuk menangani hal itu, tersedia broadcast stream yang dapat digunakan untuk multiple subscriptions. Pada praktikum ini, Anda akan mencoba untuk melakukan multiple stream subscriptions.
+
+
+## Langkah 1: Buka file main.dart
+Ketik variabel berikut di dalam class _StreamHomePageState: 
+
+### 💻 Source Code  
+```dart
+late StreamSubscription subscription2;
+String values = '';
+```
+ 
+---   
+
+
+## Langkah 2: Edit initState()
+Ketik kode seperti berikut.
+
+### 💻 Source Code  
+```dart
+subscription = stream.listen((event) {
+  setState(() {
+    values += '$event - ';
+  });
+});
+
+subscription2 = stream.listen((event) {
+  setState(() {
+    values += '$event - ';
+  });
+});
+```
+ 
+---   
+
+
+## Soal 10
+## Jelaskan mengapa error itu bisa terjadi ?
+Error terjadi karena variabel values dan subscription2 belum dideklarasikan ketika digunakan. Listener kedua mencoba menambahkan data ke values, tetapi variabel tersebut belum ada atau belum diinisialisasi, sehingga muncul error. Selain itu, subscription2 harus dideklarasikan di dalam class sebelum digunakan dalam initState().
+
+## Langkah 4: Set broadcast stream
+Ketik kode seperti berikut di method initState()
+
+## Langkah 5: Edit method build()
+Tambahkan text seperti berikut
+
+## Langkah 6: Run
+Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka terus bertambah sebanyak dua kali.
+
+
+## Jelaskan mengapa hal itu bisa terjadi ?
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
+
