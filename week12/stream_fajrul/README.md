@@ -708,3 +708,47 @@ void addRandomNumber() {
 ---   
 
 
+Soal 9
+## Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+✅ Langkah 2 — initState() (membuat stream dan mulai mendengarkan)
+
+Pada langkah ini, aplikasi:
+
+Membuat stream controller untuk angka.
+
+Menghubungkan stream tersebut ke listener (subscription).
+
+Tiap kali stream mengirim angka baru, UI akan diperbarui (setState).
+
+Intinya:
+Aplikasi mulai “mendengarkan” aliran data dari stream, dan setiap angka yang masuk langsung ditampilkan ke layar.
+
+✅ Langkah 6 — dispose() (membersihkan listener saat halaman ditutup)
+
+Pada langkah ini:
+
+subscription.cancel() menghentikan listener.
+
+Mencegah memory leak.
+
+Intinya:
+Menghentikan semua proses stream ketika widget dihapus agar aplikasi tetap aman dan tidak boros memori.
+
+✅ Langkah 8 — addRandomNumber() (mengirim angka jika stream masih aktif)
+
+Pada langkah ini:
+
+Mengecek apakah stream masih terbuka.
+
+Jika masih terbuka → kirim angka random.
+
+Jika sudah ditutup → tampilkan -1 sebagai tanda error.
+
+Intinya:
+Hanya menambahkan angka ke stream jika stream belum ditutup. Jika sudah ditutup, tampilkan error (-1).
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+![Praktikum ](img/P12P4L6.gif) 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
+
+
