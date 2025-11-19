@@ -31,31 +31,34 @@ class _StreamHomePageState extends State<StreamHomePage> {
   int lastNumber = 0;
 
   late StreamSubscription subscription;
+  late StreamSubscription subscription2;
   late StreamController<int> numberStreamController;
+
+  String values = '';
 
   @override
   void initState() {
     super.initState();
 
-    NumberStream numberStreamObj = NumberStream();
-    numberStreamController = numberStreamObj.controller;
+    NumberStream numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
 
-    Stream stream = numberStreamController.stream;
+    // ==== LANGKAH 4: broadcast stream ====
+    Stream stream = numberStreamController.stream.asBroadcastStream();
 
+    // Listener 1
     subscription = stream.listen((event) {
       setState(() {
         lastNumber = event;
+        values += '$event - ';
       });
     });
 
-    subscription.onError((error) {
+    // Listener 2
+    subscription2 = stream.listen((event) {
       setState(() {
-        lastNumber = -1;
+        values += '$event - ';
       });
-    });
-
-    subscription.onDone(() {
-      print("Stream selesai");
     });
   }
 
@@ -79,6 +82,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
   @override
   void dispose() {
     subscription.cancel();
+    subscription2.cancel();
     super.dispose();
   }
 
@@ -97,6 +101,14 @@ class _StreamHomePageState extends State<StreamHomePage> {
               lastNumber.toString(),
               style: const TextStyle(fontSize: 40, color: Colors.black87),
             ),
+
+            // ==== LANGKAH 5 ====
+            Text(
+              values,
+              style: const TextStyle(fontSize: 20, color: Colors.black54),
+              textAlign: TextAlign.center,
+            ),
+
             ElevatedButton(
               onPressed: addRandomNumber,
               child: const Text("New Random Number"),
