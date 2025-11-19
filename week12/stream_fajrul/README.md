@@ -795,15 +795,55 @@ Error terjadi karena variabel values dan subscription2 belum dideklarasikan keti
 
 ## Langkah 4: Set broadcast stream
 Ketik kode seperti berikut di method initState()
+### 💻 Source Code  
+```dart
+void initState() {
+  numberStream = NumberStream();
+  numberStreamController = numberStream.controller;
+  Stream stream = numberStreamController.stream.asBroadcastStream();
+  ...
+}
+```
+ 
+---   
+
+
+
+
 
 ## Langkah 5: Edit method build()
-Tambahkan text seperti berikut
+Tambahkan text seperti berikut 
+
+### 💻 Source Code  
+```dart
+child: Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Text(values),
+    ...
+  ]
+)
+```
+ 
+---   
+
+
+
 
 ## Langkah 6: Run
 Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka terus bertambah sebanyak dua kali.
 
 
-## Jelaskan mengapa hal itu bisa terjadi ?
+## Jelaskan mengapa hal itu bisa terjadi ? 
+Error muncul karena stream default tidak bisa memiliki lebih dari satu listener.
+Pada langkah sebelumnya, Anda menambahkan dua subscription (subscription dan subscription2) ke stream yang sama, sehingga muncul error:
+
+“Bad state: Stream has already been listened to.”
+
+Stream hanya boleh didengarkan sekali, kecuali Anda mengubahnya menjadi broadcast stream menggunakan:
 ## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+![Praktikum ](img/P12P5L6.gif) 
+
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
 
