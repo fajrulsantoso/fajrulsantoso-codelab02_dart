@@ -500,3 +500,48 @@ Ini dilakukan agar kita bisa menguji apakah handler error pada langkah 14 bekerj
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
 
 
+## 5. Praktikum 3: Injeksi data ke streams
+Skenario yang umum dilakukan adalah melakukan manipulasi atau transformasi data stream sebelum sampai pada UI end user. Hal ini sangatlah berguna ketika Anda membutuhkan untuk filter data berdasarkan kondisi tertentu, melakukan validasi data, memodifikasinya, atau melakukan proses lain yang memicu beberapa output baru. Contohnya melakukan konversi angka ke string, membuat sebuah perhitungan, atau menghilangkan data yang berulang terus tampil. 
+
+
+## Langkah 1: Buka main.dart
+Tambahkan variabel baru di dalam class _StreamHomePageState
+### 💻 Source Code  
+```dart
+late StreamTransformer transformer;
+```
+
+---     
+
+
+## Langkah 2: Tambahkan kode ini di initState
+### 💻 Source Code  
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+  handleData: (value, sink) {
+    sink.add(value * 10);
+  },
+  handleError: (error, trace, sink) {
+    sink.add(-1);
+  },
+  handleDone: (sink) => sink.close());
+
+```
+
+---     
+
+## Langkah 3: Tetap di initState
+### 💻 Source Code  
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+  handleData: (value, sink) {
+    sink.add(value * 10);
+  },
+  handleError: (error, trace, sink) {
+    sink.add(-1);
+  },
+  handleDone: (sink) => sink.close());
+
+```
+
+---     
