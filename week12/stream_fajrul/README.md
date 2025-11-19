@@ -433,4 +433,151 @@ Intinya: Langkah 10 = Membersihkan resource dengan menutup stream.
 ![Praktikum ](img/P12P2L11.gif) 
 
 
+## Langkah 13: Buka stream.dart
+Tambahkan method berikut ini.
+
+### 💻 Source Code  
+```dart
+addError() {
+  controller.sink.addError('error');
+}
+```
+
+---    
+
+
+## Langkah 14: Buka main.dart
+Tambahkan method onError di dalam class HomePageState pada method listen di fungsi initState() seperti berikut ini.
+
+### 💻 Source Code  
+```dart
+stream.listen((event) {
+  setState(() {
+    lastNumber = event;
+  });
+}).onError((event) {
+  setState(() {
+    lastNumber = -1;
+  });
+});
+```
+
+---    
+
+## Langkah 15: Edit method addRandomNumber()
+Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini.
+
+
+### 💻 Source Code  
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  //int myNum = random.nextInt(10);
+  //numberStream.addNumberToSink(myNum);
+  numberStream.addError();
+}
+```
+
+---    
+
+
+## Jelaskan maksud kode langkah 13 sampai 15 tersebut! 
+🔹 Langkah 13 – Menambahkan addError()
+Membuat fungsi untuk mengirim error ke stream. Tujuannya agar kita bisa mencoba bagaimana stream memproses error event, bukan hanya data biasa.
+
+🔹 Langkah 14 – Menangani error dengan .onError()
+Menambahkan handler error pada listener.
+Jika stream menerima error, UI akan diubah (misalnya menampilkan nilai -1).
+Ini mengajarkan cara menangkap dan merespons error yang dikirim dari stream.
+
+🔹 Langkah 15 – Mengubah addRandomNumber() untuk mengirim error
+Bagian yang biasanya mengirim angka diganti untuk mengirim error.
+Ini dilakukan agar kita bisa menguji apakah handler error pada langkah 14 bekerja.
+
+
+## Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya. 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
+
+
+## 5. Praktikum 3: Injeksi data ke streams
+Skenario yang umum dilakukan adalah melakukan manipulasi atau transformasi data stream sebelum sampai pada UI end user. Hal ini sangatlah berguna ketika Anda membutuhkan untuk filter data berdasarkan kondisi tertentu, melakukan validasi data, memodifikasinya, atau melakukan proses lain yang memicu beberapa output baru. Contohnya melakukan konversi angka ke string, membuat sebuah perhitungan, atau menghilangkan data yang berulang terus tampil. 
+
+
+## Langkah 1: Buka main.dart
+Tambahkan variabel baru di dalam class _StreamHomePageState
+### 💻 Source Code  
+```dart
+late StreamTransformer transformer;
+```
+
+---     
+
+
+## Langkah 2: Tambahkan kode ini di initState
+### 💻 Source Code  
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+  handleData: (value, sink) {
+    sink.add(value * 10);
+  },
+  handleError: (error, trace, sink) {
+    sink.add(-1);
+  },
+  handleDone: (sink) => sink.close());
+
+```
+
+---     
+
+## Langkah 3: Tetap di initState
+### 💻 Source Code  
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+  handleData: (value, sink) {
+    sink.add(value * 10);
+  },
+  handleError: (error, trace, sink) {
+    sink.add(-1);
+  },
+  handleDone: (sink) => sink.close());
+
+```
+
+---     
+
+
+## Jelaskan maksud kode langkah 1-3 tersebut! 
+🔹 Langkah 1 — Menambahkan variabel StreamTransformer
+
+Variabel ini disiapkan untuk memproses data yang melewati stream. Jadi sebelum data diterima UI, data tersebut bisa diubah, difilter, atau ditangani dengan aturan khusus.
+
+🔹 Langkah 2 — Membuat transformer dengan aturan pemrosesan
+
+Di langkah ini ditentukan bagaimana stream harus memproses data:
+
+handleData: setiap angka masuk akan dikali 10 sebelum dikirim ke listener
+
+handleError: jika ada error di stream, nilai pengganti -1 akan dikirim
+
+handleDone: menutup stream ketika selesai
+
+Intinya: membuat “aturan transformasi” untuk data dan error.
+
+🔹 Langkah 3 — Menerapkan transformer ke stream
+
+Stream angka (numberStream) dipasangkan dengan transformer sehingga:
+
+data masuk diproses dulu (dikali 10)
+
+error ditangani (menjadi -1)
+
+hasil akhir baru dikirim ke UI untuk ditampilkan
+
+Dengan begitu, UI selalu menerima data yang sudah diolah oleh transformer.
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README. 
+![Praktikum ](img/P12P3L6.gif) 
+
+## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
+
 
