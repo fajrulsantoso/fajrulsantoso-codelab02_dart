@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
+// ==========================
+// Class untuk warna
+// ==========================
 class ColorStream {
   final List<Color> colors = [
     Colors.blueGrey,
@@ -7,7 +11,6 @@ class ColorStream {
     Colors.deepPurple,
     Colors.lightBlue,
     Colors.teal,
-    // Tambahan 5 warna favorit
     Colors.redAccent,
     Colors.greenAccent,
     Colors.orange,
@@ -20,5 +23,20 @@ class ColorStream {
       int index = t % colors.length;
       return colors[index];
     });
+  }
+}
+
+// ==========================
+// Class untuk angka
+// ==========================
+class NumberStream {
+  final StreamController<int> controller = StreamController<int>();
+
+  void addNumberToSink(int newNumber) {
+    controller.sink.add(newNumber);
+  }
+
+  void close() {
+    controller.close();
   }
 }

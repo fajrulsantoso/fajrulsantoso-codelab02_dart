@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:math';
 import 'stream.dart';
 
 void main() {
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FAJRUL SANTOSO 11',
+      title: 'Stream Demo',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: const StreamHomePage(),
     );
@@ -26,44 +28,74 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
-  // Langkah 8: Tambah variabel
+  // ==========================
+  // Variabel untuk warna
+  // ==========================
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
 
-  // Langkah 9: Tambah method changeColor()
-  void changeColor() async {
-    await for (var eventColor in colorStream.getColorStream()) {
-      if (!mounted) return; // pastikan widget masih aktif
-      setState(() {
-        bgColor = eventColor;
-      });
-    }
-  }
+  // ==========================
+  // Variabel untuk angka
+  // ==========================
+  int lastNumber = 0;
+  late NumberStream numberStream;
 
-  // Langkah 10: Override initState()
   @override
   void initState() {
     super.initState();
+
+    // Setup ColorStream
     colorStream = ColorStream();
-    changeColor();
+    colorStream.getColorStream().listen((eventColor) {
+      if (!mounted) return;
+      setState(() {
+        bgColor = eventColor;
+      });
+    });
+
+    // Setup NumberStream
+    numberStream = NumberStream();
+    numberStream.controller.stream.listen((event) {
+      if (!mounted) return;
+      setState(() {
+        lastNumber = event;
+      });
+    });
+  }
+
+  // Method untuk menambahkan angka random
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10); // angka 0–9
+    numberStream.addNumberToSink(myNum);
+  }
+
+  @override
+  void dispose() {
+    numberStream.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Stream')),
-      body: AnimatedContainer(
-        duration: const Duration(seconds: 1), // animasi perubahan warna
-        color: bgColor,
-        child: const Center(
-          child: Text(
-            'Selamat Datang!',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+      appBar: AppBar(title: const Text('Stream Demo')),
+      backgroundColor: bgColor,
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              lastNumber.toString(),
+              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
-          ),
+            ElevatedButton(
+              onPressed: addRandomNumber,
+              child: const Text('New Random Number'),
+            ),
+          ],
         ),
       ),
     );
