@@ -430,7 +430,7 @@ Intinya: Langkah 10 = Membersihkan resource dengan menutup stream.
 ## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
-![Praktikum ](img/P12P2L11.JPG) 
+![Praktikum ](img/P12P2L11.gif) 
 
 
 
