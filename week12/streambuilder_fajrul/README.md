@@ -148,5 +148,5 @@ Pada langkah 7, digunakan StreamBuilder untuk mendengarkan stream yang sudah dib
 ## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ## JAWABAN
-![Praktikum ](img/P12P6L12.JPG) 
+![Praktikum ](img/P12P6L12.gif) 
 ## Lalu lakukan commit dengan pesan "W12: Jawaban Soal 12".
