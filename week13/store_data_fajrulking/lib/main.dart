@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'dart:convert'; // Optional, jika ingin decode JSON menjadi Map/List
+import 'dart:convert';
+import 'model/pizza.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-// 💻 Langkah 6: Buat class MyApp
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// 💻 Langkah 6: Buat StatefulWidget MyHomePage
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -27,41 +26,59 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// 💻 Langkah 6: Tambahkan _MyHomePageState
 class _MyHomePageState extends State<MyHomePage> {
-  // 💻 Langkah 6: Tambahkan variabel pizzaString
-  String pizzaString = '';
+  List<Pizza> myPizzas = [];
 
-  // 🚀 Langkah 8: Panggil readJsonFile di initState
   @override
   void initState() {
     super.initState();
-    readJsonFile(); // Memanggil method untuk membaca JSON saat widget dibuat
+    loadPizzas();
   }
 
-  // 💾 Langkah 7: Tambahkan Method readJsonFile
-  Future<void> readJsonFile() async {
-    String myString = await DefaultAssetBundle.of(
-      context,
-    ).loadString('assets/pizzalist.json');
+  void loadPizzas() async {
+    List<Pizza> pizzas = await readJsonFile();
     setState(() {
-      pizzaString = myString;
+      myPizzas = pizzas;
     });
   }
 
-  // 💻 Langkah 9: Tampilkan hasil JSON di body
+  Future<List<Pizza>> readJsonFile() async {
+    String jsonString = await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/pizzalist.json');
+    List<dynamic> pizzaMapList = jsonDecode(jsonString);
+    return pizzaMapList.map((json) => Pizza.fromJson(json)).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter JSON FAJRUL SANTOSO')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: pizzaString.isEmpty
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Text(pizzaString, style: const TextStyle(fontSize: 16)),
-              ),
-      ),
+      body: myPizzas.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: myPizzas.length,
+              itemBuilder: (context, index) {
+                final pizza = myPizzas[index];
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: ListTile(
+                    title: Text(pizza.pizzaName),
+                    subtitle: Text(
+                      '${pizza.description}\n\$${pizza.price.toStringAsFixed(2)}',
+                    ),
+                    leading: pizza.imageUrl.isNotEmpty
+                        ? Image.network(
+                            pizza.imageUrl,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          )
+                        : null,
+                  ),
+                );
+              },
+            ),
     );
   }
 }
