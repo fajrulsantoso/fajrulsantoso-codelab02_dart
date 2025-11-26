@@ -336,4 +336,6 @@ Jalankan aplikasi. Sekarang, Anda akan melihat data pizza ditampilkan dalam daft
 
 ## soal 3
 ## Masukkan hasil capture layar ke laporan praktikum Anda.
-## Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 3"
+## Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 3" 
+## JAWABAN
+![Praktikum ](img/P13P1L10.gif)  
