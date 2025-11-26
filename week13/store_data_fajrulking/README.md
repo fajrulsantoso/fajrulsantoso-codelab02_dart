@@ -252,32 +252,88 @@ import './pizza.dart';
 
 ## Langkah 16: Konversi List Map ke List Objek Dart
 Di dalam method readJsonFile(), setelah baris List pizzaMapList = jsonDecode(myString);, tambahkan kode berikut untuk mengonversi setiap Map di pizzaMapList menjadi objek Pizza dan menyimpannya ke myPizzas.
-'''
+
+### 💻 Source Code  
+```dart
 List<Pizza> myPizzas = [];
   for (var pizza in pizzaMapList) {
     Pizza myPizza = Pizza.fromJson(pizza);
     myPizzas.add(myPizza);
   }
-'''
-'''
+```
+ 
+---  
 
 ## Langkah 17: return myPizzas
-Hapus atau komentari setState yang menampilkan pizzaString dari Langkah 7. Kemudian, kembalikan myPizzas. 
+Hapus atau komentari setState yang menampilkan pizzaString dari Langkah 7. Kemudian, kembalikan myPizzas.  
+
+### 💻 Source Code  
+```dart
+return myPizzas;
+```
+ 
+---  
+
 
 ## Langkah 18: Perbarui Signature Method
 Perbarui signature method readJsonFile() untuk secara eksplisit menunjukkan bahwa ia mengembalikan Future yang berisi List.
+### 💻 Source Code  
+```dart
+Future<List<Pizza>> readJsonFromFile() async {
+```
+ 
+---  
+
 
 ## Langkah 19: Deklarasikan Variabel State
 Di dalam class _MyHomePageState, deklarasikan variabel state baru untuk menampung List objek Pizza. 
+### 💻 Source Code  
+```dart
+List<Pizza> myPizzas = [];
+```
+ 
+---  
 
 ## Langkah 20: Panggil di initState dan Perbarui State
 Perbarui method initState() di _MyHomePageState untuk memanggil readJsonFile(). Karena readJsonFile() mengembalikan Future, gunakan .then() untuk mendapatkan hasilnya, dan perbarui state myPizzas. 
 
+### 💻 Source Code  
+```dart
+@override
+  void initState() {
+    super.initState();
+    readJsonFromFile().then((value) {
+      setState(() {
+        myPizzas = value;
+      });
+    });
+  }
+```
+ 
+---  
 
 ## Langkah 21: Tampilkan Data di ListView
 Perbarui body dari Scaffold untuk menggunakan ListView.builder yang menampilkan pizzaName sebagai judul dan description sebagai subjudul dari setiap objek Pizza. 
+### 💻 Source Code  
+```dart
+body: ListView.builder(
+  itemCount: myPizzas.length,
+  itemBuilder: (context, index) {
+    return ListTile(
+      title: Text(myPizzas[index].pizzaName),
+      subtitle: Text(myPizzas[index].description),
+    );
+  },
+ ));
+}
+```
+ 
+---  
+
 
 ## Langkah 22: Run
 Jalankan aplikasi. Sekarang, Anda akan melihat data pizza ditampilkan dalam daftar yang lebih terstruktur sebagai objek List Dart.
 
-
+## soal 3
+## Masukkan hasil capture layar ke laporan praktikum Anda.
+## Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 3"
