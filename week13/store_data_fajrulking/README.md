@@ -538,6 +538,56 @@ Lalu lakukan commit dengan pesan "W13: Jawaban Soal 4".
 
 
 
+## 5. Praktikum 3: Menangani error JSON
+Pada praktikum 3 ini, Anda akan berfokus pada Catching common JSON errors, yaitu dengan mengganti string literals (nama kunci JSON) dengan konstanta untuk menghindari error yang sulit di-debug (kesalahan pengetikan).
+
+## Langkah 1: Buka pizza.dart dan Buat Konstanta
+Di bagian atas file pizza.dart, di luar class Pizza, deklarasikan konstanta untuk setiap kunci JSON.
+
+### 💻 Source Code  
+```dart
+const keyId = 'id';
+const keyName = 'pizzaName';
+const keyDescription = 'description';
+const keyPrice = 'price';
+const keyImage = 'imageUrl';
+```
+ 
+---   
 
 
+## Langkah 2: Perbarui fromJson() menggunakan Konstanta
+Di constructor Pizza.fromJson, ganti semua string literal kunci JSON (misalnya 'id') dengan konstanta yang sesuai (keyId).
 
+### 💻 Source Code  
+``Pizza.fromJson(Map<String, dynamic> json) {
+  id = int.tryParse(json[keyId].toString()) ?? 0;
+  pizzaName =
+    json[keyName] != null ? json[keyName].toString() : 'No name';
+  description =
+    (json[keyDescription] != null) ? json[keyDescription].toString() : '';
+  price = double.tryParse(json[keyPrice].toString()) ?? 0;
+  imageUrl = json[keyImage] ?? '';
+}
+```
+ 
+---   
+
+
+## Langkah 3: Perbarui toJson() menggunakan Konstanta
+Perbarui juga method toJson() agar menggunakan konstanta yang sama.
+
+
+### 💻 Source Code  
+```Map<String, dynamic> toJson() {
+  return {
+    keyId: id,
+    keyName: pizzaName,
+    keyDescription: description,
+    keyPrice: price,
+    keyImage: imageUrl,
+  };
+}
+```
+ 
+---   
