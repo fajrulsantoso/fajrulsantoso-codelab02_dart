@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'model/pizza.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter JSON FAJRUL SANTOSO',
+      debugShowCheckedModeBanner: false,
+      title: 'Shared Preferences Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MyHomePage(),
     );
@@ -27,54 +27,58 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Pizza> myPizzas = [];
+  int appCounter = 0;
 
   @override
   void initState() {
     super.initState();
-    loadPizzas();
+    readAndWritePreference();
   }
 
-  void loadPizzas() async {
-    List<Pizza> pizzas = await readJsonFile();
+  Future<void> readAndWritePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Baca nilai counter sebelumnya
+    appCounter = prefs.getInt('appCounter') ?? 0;
+
+    // Tambah setiap kali aplikasi dibuka
+    appCounter++;
+
+    // Simpan kembali ke storage
+    await prefs.setInt('appCounter', appCounter);
+
+    // Update UI
+    setState(() {});
+  }
+
+  Future<void> deletePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Hapus semua data SharedPreferences
+    await prefs.clear();
+
+    // Reset UI
     setState(() {
-      myPizzas = pizzas;
+      appCounter = 0;
     });
-  }
-
-  Future<List<Pizza>> readJsonFile() async {
-    String jsonString = await DefaultAssetBundle.of(
-      context,
-    ).loadString('assets/pizzalist.json');
-
-    List<dynamic> pizzaMapList = jsonDecode(jsonString);
-    return pizzaMapList.map((json) => Pizza.fromJson(json)).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter JSON FAJRUL SANTOSO')),
-      body: myPizzas.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: myPizzas.length,
-              itemBuilder: (context, index) {
-                final pizza = myPizzas[index];
-
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: ListTile(
-                    title: Text(pizza.pizzaName),
-                    subtitle: Text(
-                      '${pizza.description}\n\$${pizza.price.toStringAsFixed(2)}',
-                    ),
-                    leading: const Icon(Icons.local_pizza, size: 40),
-                  ),
-                );
-              },
+      appBar: AppBar(title: const Text("Shared Preferences Example")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("You have opened this app $appCounter times."),
+            ElevatedButton(
+              onPressed: deletePreference,
+              child: const Text("Reset counter"),
             ),
+          ],
+        ),
+      ),
     );
   }
 }
