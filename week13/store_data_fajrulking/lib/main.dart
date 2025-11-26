@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     String jsonString = await DefaultAssetBundle.of(
       context,
     ).loadString('assets/pizzalist.json');
+
     List<dynamic> pizzaMapList = jsonDecode(jsonString);
     return pizzaMapList.map((json) => Pizza.fromJson(json)).toList();
   }
@@ -61,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: myPizzas.length,
               itemBuilder: (context, index) {
                 final pizza = myPizzas[index];
+
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
@@ -68,13 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     subtitle: Text(
                       '${pizza.description}\n\$${pizza.price.toStringAsFixed(2)}',
                     ),
-                    leading: pizza.imageUrl.isNotEmpty
-                        ? Image.network(
-                            pizza.imageUrl,
-                            width: 50,
-                            fit: BoxFit.cover,
-                          )
-                        : null,
+                    leading: const Icon(Icons.local_pizza, size: 40),
                   ),
                 );
               },
