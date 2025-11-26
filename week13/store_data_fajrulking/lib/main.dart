@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Shared Preferences Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: 'Path Provider Example',
       home: const MyHomePage(),
     );
   }
@@ -27,55 +26,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int appCounter = 0;
+  String documentsPath = '';
+  String tempPath = '';
 
   @override
   void initState() {
     super.initState();
-    readAndWritePreference();
+    getPaths();
   }
 
-  Future<void> readAndWritePreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
 
-    // Baca nilai counter sebelumnya
-    appCounter = prefs.getInt('appCounter') ?? 0;
-
-    // Tambah setiap kali aplikasi dibuka
-    appCounter++;
-
-    // Simpan kembali ke storage
-    await prefs.setInt('appCounter', appCounter);
-
-    // Update UI
-    setState(() {});
-  }
-
-  Future<void> deletePreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    // Hapus semua data SharedPreferences
-    await prefs.clear();
-
-    // Reset UI
     setState(() {
-      appCounter = 0;
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Shared Preferences Example")),
-      body: Center(
+      appBar: AppBar(title: const Text('Path Provider')),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("You have opened this app $appCounter times."),
-            ElevatedButton(
-              onPressed: deletePreference,
-              child: const Text("Reset counter"),
+            Text(
+              'Documents Path:',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
+            Text(documentsPath),
+
+            SizedBox(height: 30),
+
+            Text(
+              'Temporary Path:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text(tempPath),
           ],
         ),
       ),
