@@ -598,4 +598,208 @@ Dengan memakai tryParse, toString(), dan ?? (nilai default), aplikasi tidak akan
 
 Semua field diproses secara konsisten sehingga kode lebih stabil, lebih mudah dibaca, dan tetap berjalan meskipun datanya tidak sempurna.
 ## Capture hasil praktikum Anda dan lampirkan di README.
-## Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".
+## Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5". 
+
+
+## 6. Praktikum 4: SharedPreferences
+Praktikum ini membahas menyimpan data sederhana dengan SharedPreferences. Kita akan menggunakan shared_preferences untuk menyimpan hitungan sederhana. 
+
+
+## Langkah 1: Tambahkan Dependensi
+Di Terminal, tambahkan package shared_preferences.
+
+### 💻 Source Code  
+```Map<String, dynamic> toJson() {
+ flutter pub add shared_preferences
+  };
+}
+```
+ 
+---   
+
+
+## Langkah 2: Install Dependensi
+Jalankan flutter pub get jika editor Anda tidak melakukannya secara otomatis.
+
+
+
+
+
+## Langkah 3: Lakukan Import
+Di file main.dart, tambahkan import untuk shared_preferences.
+
+### 💻 Source Code  
+```
+import 'package:shared_preferences/shared_preferences.dart';
+
+```
+ 
+---   
+
+
+
+## Langkah 4: Tambahkan Variabel appCounter
+Di dalam class _MyHomePageState (atau State class yang Anda gunakan), deklarasikan variabel appCounter.
+
+### 💻 Source Code  
+```
+int appCounter = 0;
+```
+ 
+---   
+
+
+## Langkah 5: Buat Method readAndWritePreference
+Buat method asinkron readAndWritePreference().
+
+### 💻 Source Code  
+```
+Future<void> readAndWritePreference() async {
+```
+ 
+---   
+
+
+## Langkah 6: Dapatkan Instance SharedPreferences
+Di dalam method tersebut, dapatkan instance SharedPreferences. Perlu diingat bahwa ini adalah operasi asinkron, jadi gunakan await.
+
+### 💻 Source Code  
+```
+SharedPreferences prefs = await SharedPreferences.getInstance();
+```
+ 
+---   
+
+
+## Langkah 7: Baca, Cek Null, dan Increment Counter
+Baca nilai appCounter dari storage. Gunakan null coalescing (?? 0) untuk memastikan nilai default 0 jika data belum ada. Kemudian increment nilai tersebut.
+
+### 💻 Source Code  
+```
+appCounter = prefs.getInt('appCounter') ?? 0;
+appCounter++;
+```
+ 
+---   
+
+
+
+## Langkah 8: Simpan Nilai Baru
+Simpan nilai appCounter yang sudah di-increment kembali ke storage menggunakan prefs.setInt().
+
+### 💻 Source Code  
+```
+await prefs.setInt('appCounter', appCounter);
+```
+ 
+---   
+
+
+
+## Langkah 9: Perbarui State
+Panggil setState() untuk memperbarui UI dengan nilai baru appCounter.
+
+### 💻 Source Code  
+```
+setState(() {
+  appCounter = appCounter;
+});
+```
+ 
+---   
+
+
+## Langkah 10: Panggil di initState()
+Panggil readAndWritePreference() di initState() agar penghitung dibaca saat aplikasi pertama kali dibuka.
+
+### 💻 Source Code  
+```
+@override
+void initState() {
+  super.initState();
+  readAndWritePreference();
+}
+```
+ 
+---   
+
+
+
+## Langkah 11: Perbarui Tampilan (body)
+Ganti body Scaffold Anda dengan tata letak yang menampilkan hitungan dan tombol 'Reset counter'.
+
+### 💻 Source Code  
+```
+child: Center(
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      Text(
+        'You have opened the app $appCounter times.',
+      ),
+      ElevatedButton(
+        onPressed: () {},
+        child: Text('Reset counter'),
+      ),
+    ],
+  ),
+),
+
+```
+ 
+---   
+
+
+
+## Langkah 12: Run
+Aplikasi sekarang akan menampilkan "You have opened the app 1 times" (jika ini pembukaan pertama).
+
+
+
+Langkah 13: Buat Method deletePreference()
+Tambahkan method asinkron deletePreference() yang berfungsi untuk menghapus data menggunakan prefs.clear().
+
+### 💻 Source Code  
+```
+Future<void> deletePreference() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.clear();
+  setState(() {
+    appCounter = 0;
+  });
+}
+
+```
+ 
+---   
+
+
+
+
+Langkah 14: Panggil deletePreference()
+Hubungkan deletePreference() ke tombol 'Reset counter'.
+
+### 💻 Source Code  
+```
+onPressed: () {
+  deletePreference();
+},
+child: Text('Reset counter'),
+
+```
+ 
+---   
+
+
+
+
+
+Langkah 15: Run
+Jalankan aplikasi. Tombol reset sekarang akan berfungsi, menghapus semua pasangan kunci-nilai dan mereset hitungan.
+
+
+## Soal 6
+## Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6". 
+## JAWABAN
+![Praktikum ](img/P13P4L15.gif)   
