@@ -1,4 +1,3 @@
-<img width="681" height="647" alt="image" src="https://github.com/user-attachments/assets/a2959fe6-9aa9-4e46-9a4b-26f5813b1032" /># store_data_fajrulking
 
 ## Langkah 1: Buat Project Baru
 Buatlah sebuah project flutter baru dengan nama store_data_nama (beri nama panggilan Anda) di folder week-13/src/ repository GitHub Anda.
@@ -591,3 +590,12 @@ Perbarui juga method toJson() agar menggunakan konstanta yang sama.
 ```
  
 ---   
+
+
+## Soal 5
+## Jelaskan maksud kode lebih safe dan maintainable!
+Dengan memakai tryParse, toString(), dan ?? (nilai default), aplikasi tidak akan error jika data JSON salah tipe, kosong, atau hilang.
+
+Semua field diproses secara konsisten sehingga kode lebih stabil, lebih mudah dibaca, dan tetap berjalan meskipun datanya tidak sempurna.
+## Capture hasil praktikum Anda dan lampirkan di README.
+## Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".
