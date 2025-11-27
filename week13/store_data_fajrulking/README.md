@@ -921,3 +921,62 @@ Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
 
 ## JAWABAN
 ![Praktikum ](img/P13P5L7.gif)   
+
+
+
+## Langkah 1: Lakukan Import dart:io
+Di file main.dart, tambahkan import untuk pustaka dart:io.
+
+
+
+## Langkah 2: Tambahkan Variabel File dan Text
+Di State class, tambahkan variabel myFile (dengan modifier late) dan fileText untuk menyimpan konten yang akan dibaca.
+
+
+
+## Langkah 3: Buat Method writeFile()
+Buat method asinkron writeFile() yang menggunakan myFile.writeAsString() untuk menulis konten ke file. Kata ‘Margherita, Capricciosa, Napoli' silakan Anda ganti dengan Nama Lengkap dan NIM Anda.
+
+
+### 💻 Source Code  
+```
+Future<bool> writeFile() async {
+  try {
+    await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+```
+ 
+---   
+
+
+## Langkah 4: Inisialisasi File dan Panggil writeFile() di initState()
+Perbarui initState(): setelah getPaths() selesai, inisialisasi myFile dengan jalur lengkap di direktori dokumen, dan panggil writeFile().
+
+
+
+## Langkah 5: Buat Method readFile()
+Buat method asinkron readFile() yang menggunakan myFile.readAsString() untuk membaca konten file dan memperbarui fileText melalui setState().
+
+
+
+## Langkah 6: Edit build() dan Tambahkan Tombol Baca
+Di method build(), tambahkan ElevatedButton yang memanggil readFile() dan Text yang menampilkan fileText di bawahnya.
+
+
+
+
+
+## Langkah 7: Run
+Jalankan aplikasi. Setelah menekan tombol 'Read File', konten yang ditulis (Margherita, Capricciosa, Napoli) akan ditampilkan atau sesuai nama dan NIM Anda.
+
+
+
+## Soal 8
+## Jelaskan maksud kode pada langkah 3 dan 7 !
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8".
