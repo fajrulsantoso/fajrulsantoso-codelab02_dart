@@ -980,3 +980,93 @@ Jalankan aplikasi. Setelah menekan tombol 'Read File', konten yang ditulis (Marg
 ## Jelaskan maksud kode pada langkah 3 dan 7 !
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8".
+
+
+
+## 9. Praktikum 7: Menyimpan data dengan enkripsi/dekripsi
+Pada praktikum ini Anda akan praktik menggunakan secure storage untuk menyimpan data menggunakan package flutter_secure_storage untuk menyimpan data sensitif (seperti kata sandi) dengan aman. 
+
+
+
+## Langkah 1: Tambahkan Dependensi
+Tambahkan package flutter_secure_storage melalui Terminal.
+
+
+
+## Langkah 2: Lakukan Import
+Di main.dart, impor package yang diperlukan.
+
+
+### 💻 Source Code  
+```
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+```
+ 
+---   
+
+
+## Langkah 3: Tambahkan Variabel dan Controller
+Di State class (_MyHomePageState), tambahkan TextEditingController dan variabel untuk menyimpan kata sandi yang dibaca.
+
+
+
+### 💻 Source Code  
+```
+final pwdController = TextEditingController();
+String myPass = '';
+```
+ 
+---   
+
+
+## Langkah 4: Inisialisasi Secure Storage
+Di State class, inisialisasi FlutterSecureStorage dan tentukan kuncinya.
+
+
+
+## Langkah 5: Buat Method writeToSecureStorage()
+Buat method asinkron untuk menulis data dari pwdController ke secure storage.
+
+
+
+## Langkah 6: Buat Method readFromSecureStorage()
+Buat method asinkron untuk membaca data dari secure storage.
+
+
+
+## Langkah 7: Edit build() untuk UI dan Logic
+Perbarui method build() untuk menyertakan TextField dan dua ElevatedButton (Save Value dan Read Value). Hubungkan method save ke tombol Save Value.
+
+
+
+### 💻 Source Code  
+```
+// Di dalam body: Column children:
+TextField(
+  controller: pwdController,
+),
+ElevatedButton(child: const Text('Save Value'), onPressed: () {
+  writeToSecureStorage();
+}),
+//
+...
+```
+ 
+---   
+
+
+## Langkah 8: Hubungkan Read ke Tombol
+Hubungkan method read ke tombol Read Value, perbarui myPass dan UI melalui setState().
+
+
+
+## Langkah 9: Run
+Jalankan aplikasi. Masukkan teks, simpan, lalu baca kembali. Teks tersebut seharusnya ditampilkan, menandakan data telah disimpan dan diambil dengan aman.
+
+
+
+## Soal 9
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".
+
